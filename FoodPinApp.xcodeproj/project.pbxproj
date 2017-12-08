@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A3A341D81FD95DC20082BF14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A341D71FD95DC20082BF14 /* AppDelegate.swift */; };
-		A3A341DA1FD95DC20082BF14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A341D91FD95DC20082BF14 /* ViewController.swift */; };
+		A3A341D81FD95DC20082BF14 /* FoodPinAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A341D71FD95DC20082BF14 /* FoodPinAppDelegate.swift */; };
+		A3A341DA1FD95DC20082BF14 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A341D91FD95DC20082BF14 /* ListTableViewController.swift */; };
 		A3A341DD1FD95DC20082BF14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3A341DB1FD95DC20082BF14 /* Main.storyboard */; };
 		A3A341DF1FD95DC20082BF14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3A341DE1FD95DC20082BF14 /* Assets.xcassets */; };
 		A3A341E21FD95DC20082BF14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3A341E01FD95DC20082BF14 /* LaunchScreen.storyboard */; };
 		A3A341ED1FD95DC20082BF14 /* FoodPinAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A341EC1FD95DC20082BF14 /* FoodPinAppTests.swift */; };
 		A3A341F81FD95DC20082BF14 /* FoodPinAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A341F71FD95DC20082BF14 /* FoodPinAppUITests.swift */; };
+		A3A342091FD9AC750082BF14 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A342081FD9AC750082BF14 /* Restaurant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +36,8 @@
 
 /* Begin PBXFileReference section */
 		A3A341D41FD95DC20082BF14 /* FoodPinApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPinApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3A341D71FD95DC20082BF14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A3A341D91FD95DC20082BF14 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A3A341D71FD95DC20082BF14 /* FoodPinAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPinAppDelegate.swift; sourceTree = "<group>"; };
+		A3A341D91FD95DC20082BF14 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		A3A341DC1FD95DC20082BF14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A3A341DE1FD95DC20082BF14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3A341E11FD95DC20082BF14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		A3A341F31FD95DC20082BF14 /* FoodPinAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodPinAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3A341F71FD95DC20082BF14 /* FoodPinAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPinAppUITests.swift; sourceTree = "<group>"; };
 		A3A341F91FD95DC20082BF14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3A342081FD9AC750082BF14 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +99,9 @@
 		A3A341D61FD95DC20082BF14 /* FoodPinApp */ = {
 			isa = PBXGroup;
 			children = (
-				A3A341D71FD95DC20082BF14 /* AppDelegate.swift */,
-				A3A341D91FD95DC20082BF14 /* ViewController.swift */,
+				A3A342051FD97E800082BF14 /* AppDelegate */,
+				A3A342061FD98C990082BF14 /* ViewController */,
+				A3A342071FD9AC4F0082BF14 /* Struct */,
 				A3A341DB1FD95DC20082BF14 /* Main.storyboard */,
 				A3A341DE1FD95DC20082BF14 /* Assets.xcassets */,
 				A3A341E01FD95DC20082BF14 /* LaunchScreen.storyboard */,
@@ -123,6 +126,30 @@
 				A3A341F91FD95DC20082BF14 /* Info.plist */,
 			);
 			path = FoodPinAppUITests;
+			sourceTree = "<group>";
+		};
+		A3A342051FD97E800082BF14 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				A3A341D71FD95DC20082BF14 /* FoodPinAppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		A3A342061FD98C990082BF14 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A3A341D91FD95DC20082BF14 /* ListTableViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A3A342071FD9AC4F0082BF14 /* Struct */ = {
+			isa = PBXGroup;
+			children = (
+				A3A342081FD9AC750082BF14 /* Restaurant.swift */,
+			);
+			path = Struct;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +286,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3A341DA1FD95DC20082BF14 /* ViewController.swift in Sources */,
-				A3A341D81FD95DC20082BF14 /* AppDelegate.swift in Sources */,
+				A3A341DA1FD95DC20082BF14 /* ListTableViewController.swift in Sources */,
+				A3A341D81FD95DC20082BF14 /* FoodPinAppDelegate.swift in Sources */,
+				A3A342091FD9AC750082BF14 /* Restaurant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,7 +461,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pfmeira.FoodPinApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -448,7 +476,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pfmeira.FoodPinApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

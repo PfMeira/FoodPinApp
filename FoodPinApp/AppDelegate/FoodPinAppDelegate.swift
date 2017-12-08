@@ -1,5 +1,5 @@
 //
-//  AppDelegate.swift
+//  FoodPinAppDelegate.swift
 //  FoodPinApp
 //
 //  Created by Pedro Meira on 07/12/2017.
@@ -9,7 +9,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class FoodPinAppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
