@@ -25,16 +25,10 @@ class ListTableViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
         for fRestaurant in restaurant {
-            
-            print(fRestaurant)
-            
-            let newRestaurant = Restaurant.init(name: nameItem )
+            let newRestaurant = Restaurant.init(data: fRestaurant)
             restaurantNames.append(newRestaurant)
         }
-        
-        print("")
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,8 +41,18 @@ class ListTableViewController: UIViewController {
 }
 
 extension ListTableViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        optionMenu.addAction(cancelAction)
+        present(optionMenu, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         print(indexPath.row)
+        return indexPath
     }
 }
 
@@ -66,10 +70,15 @@ extension ListTableViewController: UITableViewDataSource {
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! RestaurantTableViewCell
         let nameRestaurant = restaurantNames[indexPath.row]
+
         cell.nameLabel.text = nameRestaurant.nameRestaurant
-        if let imageName = nameRestaurant.imageNameRest {
-            cell.thumbnailImageView.image = UIImage(named: imageName)
-        }
+        cell.locationLabel.text = nameRestaurant.locationRestaurant
+        cell.typeLabel.text = nameRestaurant.typeRestaurant
+        
+        let imageName = nameRestaurant.imageNameRestaurant
+        cell.thumbnailImageView.image = UIImage(named: imageName)
+    
         return cell
     }
 }
+
