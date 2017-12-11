@@ -10,13 +10,26 @@ import UIKit
 
 struct Restaurant{
     
-    let nameRest: String
+    let nameRestaurant: String
+    let locationRestaurant: String
+    let typeRestaurant: String
     let imageNameRest: String?
     
-    init(name: String) {
-        nameRest = name
-        let nameImage = name.components(separatedBy: .whitespaces).joined().lowercased()
-        print(nameImage)
-        imageNameRest = nameImage
+    init(name: String, location: String, type: String) {
+        nameRestaurant = name
+        locationRestaurant = location
+        typeRestaurant = type
+        imageNameRest = nameRestaurant
+    }
+}
+
+extension Restaurant {
+    
+    init(data: [String]) {
+        print(data)
+        nameRestaurant = data[1]
+        locationRestaurant = data[1]
+        typeRestaurant = data[2]
+        imageNameRest = nameRestaurant
     }
 }

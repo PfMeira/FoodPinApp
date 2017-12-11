@@ -10,11 +10,13 @@
 		A3A341D81FD95DC20082BF14 /* FoodPinAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A341D71FD95DC20082BF14 /* FoodPinAppDelegate.swift */; };
 		A3A341DA1FD95DC20082BF14 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A341D91FD95DC20082BF14 /* ListTableViewController.swift */; };
 		A3A341DD1FD95DC20082BF14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3A341DB1FD95DC20082BF14 /* Main.storyboard */; };
-		A3A341DF1FD95DC20082BF14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3A341DE1FD95DC20082BF14 /* Assets.xcassets */; };
 		A3A341E21FD95DC20082BF14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3A341E01FD95DC20082BF14 /* LaunchScreen.storyboard */; };
 		A3A341ED1FD95DC20082BF14 /* FoodPinAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A341EC1FD95DC20082BF14 /* FoodPinAppTests.swift */; };
 		A3A341F81FD95DC20082BF14 /* FoodPinAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A341F71FD95DC20082BF14 /* FoodPinAppUITests.swift */; };
 		A3A342091FD9AC750082BF14 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A342081FD9AC750082BF14 /* Restaurant.swift */; };
+		A3A3420B1FDB46C00082BF14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3A3420A1FDB46BF0082BF14 /* Assets.xcassets */; };
+		A3A342101FDB6E100082BF14 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A3420E1FDB6E100082BF14 /* RestaurantTableViewCell.swift */; };
+		A3A342111FDB6E100082BF14 /* RestaurantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3A3420F1FDB6E100082BF14 /* RestaurantTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +41,6 @@
 		A3A341D71FD95DC20082BF14 /* FoodPinAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPinAppDelegate.swift; sourceTree = "<group>"; };
 		A3A341D91FD95DC20082BF14 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		A3A341DC1FD95DC20082BF14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A3A341DE1FD95DC20082BF14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3A341E11FD95DC20082BF14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A3A341E31FD95DC20082BF14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3A341E81FD95DC20082BF14 /* FoodPinAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodPinAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +50,9 @@
 		A3A341F71FD95DC20082BF14 /* FoodPinAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPinAppUITests.swift; sourceTree = "<group>"; };
 		A3A341F91FD95DC20082BF14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3A342081FD9AC750082BF14 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		A3A3420A1FDB46BF0082BF14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A3A3420E1FDB6E100082BF14 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		A3A3420F1FDB6E100082BF14 /* RestaurantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +103,13 @@
 		A3A341D61FD95DC20082BF14 /* FoodPinApp */ = {
 			isa = PBXGroup;
 			children = (
+				A3A3420C1FDB6DBB0082BF14 /* Views */,
 				A3A342051FD97E800082BF14 /* AppDelegate */,
 				A3A342061FD98C990082BF14 /* ViewController */,
 				A3A342071FD9AC4F0082BF14 /* Struct */,
 				A3A341DB1FD95DC20082BF14 /* Main.storyboard */,
-				A3A341DE1FD95DC20082BF14 /* Assets.xcassets */,
 				A3A341E01FD95DC20082BF14 /* LaunchScreen.storyboard */,
+				A3A3420A1FDB46BF0082BF14 /* Assets.xcassets */,
 				A3A341E31FD95DC20082BF14 /* Info.plist */,
 			);
 			path = FoodPinApp;
@@ -150,6 +155,23 @@
 				A3A342081FD9AC750082BF14 /* Restaurant.swift */,
 			);
 			path = Struct;
+			sourceTree = "<group>";
+		};
+		A3A3420C1FDB6DBB0082BF14 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A3A3420D1FDB6DC80082BF14 /* Restaurant */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A3A3420D1FDB6DC80082BF14 /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				A3A3420E1FDB6E100082BF14 /* RestaurantTableViewCell.swift */,
+				A3A3420F1FDB6E100082BF14 /* RestaurantTableViewCell.xib */,
+			);
+			path = Restaurant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +281,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3A342111FDB6E100082BF14 /* RestaurantTableViewCell.xib in Resources */,
 				A3A341E21FD95DC20082BF14 /* LaunchScreen.storyboard in Resources */,
-				A3A341DF1FD95DC20082BF14 /* Assets.xcassets in Resources */,
+				A3A3420B1FDB46C00082BF14 /* Assets.xcassets in Resources */,
 				A3A341DD1FD95DC20082BF14 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3A342101FDB6E100082BF14 /* RestaurantTableViewCell.swift in Sources */,
 				A3A341DA1FD95DC20082BF14 /* ListTableViewController.swift in Sources */,
 				A3A341D81FD95DC20082BF14 /* FoodPinAppDelegate.swift in Sources */,
 				A3A342091FD9AC750082BF14 /* Restaurant.swift in Sources */,
