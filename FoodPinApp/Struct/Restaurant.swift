@@ -14,12 +14,14 @@ struct Restaurant{
     let locationRestaurant: String
     let typeRestaurant: String
     let imageNameRestaurant: String
+    var isVisitedRestaurant: Bool
     
-    init(data: [String]) {
+    init(data: [Any]) {
 
-        nameRestaurant = data[0]
-        locationRestaurant = data[1]
-        typeRestaurant = data[2]
+        nameRestaurant = data[0] as! String
+        locationRestaurant = data[1] as! String
+        typeRestaurant = data[2] as! String
         imageNameRestaurant = nameRestaurant
+        isVisitedRestaurant = data[3] as! Bool
     }
 }

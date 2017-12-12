@@ -103,8 +103,8 @@
 		A3A341D61FD95DC20082BF14 /* FoodPinApp */ = {
 			isa = PBXGroup;
 			children = (
-				A3A3420C1FDB6DBB0082BF14 /* Views */,
 				A3A342051FD97E800082BF14 /* AppDelegate */,
+				A3A3420C1FDB6DBB0082BF14 /* Views */,
 				A3A342061FD98C990082BF14 /* ViewController */,
 				A3A342071FD9AC4F0082BF14 /* Struct */,
 				A3A341DB1FD95DC20082BF14 /* Main.storyboard */,
@@ -486,7 +486,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pfmeira.FoodPinApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -502,7 +502,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pfmeira.FoodPinApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
