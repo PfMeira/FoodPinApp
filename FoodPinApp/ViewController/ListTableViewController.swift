@@ -66,8 +66,13 @@ extension ListTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.cellLayoutMarginsFollowReadableWidth = true
-        
         let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
+        if let popoverController = optionMenu.popoverPresentationController {
+            if let cell = tableView.cellForRow(at: indexPath) {
+                popoverController.sourceView = cell
+                popoverController.sourceRect = cell.bounds
+            }
+        }
         
         //Add call Action
         let callActionHandler = { (action: UIAlertAction!) -> Void in
@@ -98,21 +103,12 @@ extension ListTableViewController: UITableViewDelegate {
                 cell.checkInImageView.isHidden = true
                 self.restaurantNames[indexPath.row].isVisitedRestaurant = false
             })
-            //cancelAlert.addAction( UIAlertAction(title: "Yes", style: .default, handler: nil))
             optionAlert.addAction(acceptAlert)
             optionAlert.addAction(cancelAlert)
-            
             self.present(optionAlert, animated: true, completion: nil)
         }
         let callActionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: confirmActionHandler)
         optionMenu.addAction(callActionCancel)
-        
-        if let popoverController = optionMenu.popoverPresentationController {
-            if let cell = tableView.cellForRow(at: indexPath) {
-                popoverController.sourceView = cell
-                popoverController.sourceRect = cell.bounds
-            }
-        }
         
         present(optionMenu, animated: true, completion: nil)
         tableView.deselectRow(at: indexPath, animated: false)
@@ -133,6 +129,13 @@ extension ListTableViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            restaurantNames.remove(at: indexPath.row)
+        }
+        tableView.reloadData()
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -148,6 +151,7 @@ extension ListTableViewController: UITableViewDataSource {
         cell.thumbnailImageView.layer.borderWidth = 3
         cell.thumbnailImageView.layer.borderColor = UIColor.orange.cgColor
         cell.checkInImageView.image = UIImage(named: "heart-tick")
+        
         if nameRestaurant.isVisitedRestaurant == true {
             cell.checkInImageView.isHidden = false
         } else {
