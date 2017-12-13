@@ -9,10 +9,10 @@
 import UIKit
 
 class ListTableViewController: UIViewController {
-
-//    var restaurants = ["Cafe Deadend", "Homei", "Teakha", "Cafe Loisl", "Petite Oyster", "For Kee Restaurant", "Po's Atelier", "Bourke Street Bakery", "Haigh's Choc olate", "Palomino Expresso", "Upstate", "Traif", "Graham Avenue Meats And Deli", "Waffle & Wolf", "Five Leaves", "Cafe Lore", "Confessional", "Barrafina", "Donostia", "Royal Oak", "CASK Pub and Kitche"]
-//    var restaurantLocations = ["Hong kong", "Hong kong", "Hong kong", "Hong kong", "Hong kong ", "Hong kong ", "Hong kong ", "Sydney", "Sydney", "Sydney", "New York", "New York", "New York", "New York", "NewYork", "New York", "New York", "London", "London", "London", "London"]
-//    var restaurantTypes = ["Coffee & Tea Shop", "Cafe", "Tea House", "Austrian / Causal Drink", "French", "Bakery", "Bakery", "Chocolate", "Cafe", "American / Seafood", "American", "American", "Breakfast & Brunch", "Coffee & Tea", "Coffee & Tea ", "Latin American", "Spanish", "Spanish", "Spanish", "British", "Thai"]
+    
+    //    var restaurants = ["Cafe Deadend", "Homei", "Teakha", "Cafe Loisl", "Petite Oyster", "For Kee Restaurant", "Po's Atelier", "Bourke Street Bakery", "Haigh's Choc olate", "Palomino Expresso", "Upstate", "Traif", "Graham Avenue Meats And Deli", "Waffle & Wolf", "Five Leaves", "Cafe Lore", "Confessional", "Barrafina", "Donostia", "Royal Oak", "CASK Pub and Kitche"]
+    //    var restaurantLocations = ["Hong kong", "Hong kong", "Hong kong", "Hong kong", "Hong kong ", "Hong kong ", "Hong kong ", "Sydney", "Sydney", "Sydney", "New York", "New York", "New York", "New York", "NewYork", "New York", "New York", "London", "London", "London", "London"]
+    //    var restaurantTypes = ["Coffee & Tea Shop", "Cafe", "Tea House", "Austrian / Causal Drink", "French", "Bakery", "Bakery", "Chocolate", "Cafe", "American / Seafood", "American", "American", "Breakfast & Brunch", "Coffee & Tea", "Coffee & Tea ", "Latin American", "Spanish", "Spanish", "Spanish", "British", "Thai"]
     
     
     var restaurant = [["Cafe Deadend", "Hong kong","Coffee & Tea Shop", false],
@@ -37,7 +37,7 @@ class ListTableViewController: UIViewController {
                       ["Royal Oak","London", "Thai", false],
                       ["CASK Pub and Kitche",  "London", "Tea House", false]]
     
-
+    
     
     var restaurantIsVisited = Array(repeating: false, count: 21)
     var restaurantNames = [Restaurant]()
@@ -51,14 +51,14 @@ class ListTableViewController: UIViewController {
             restaurantNames.append(newRestaurant)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-//  override var prefersStatusBarHidden: Bool {
-//     return true
-//  }
+    //  override var prefersStatusBarHidden: Bool {
+    //     return true
+    //  }
 }
 
 extension ListTableViewController: UITableViewDelegate {
@@ -66,9 +66,9 @@ extension ListTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.cellLayoutMarginsFollowReadableWidth = true
-
+        
         let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
-
+        
         //Add call Action
         let callActionHandler = { (action: UIAlertAction!) -> Void in
             let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .alert)
@@ -77,14 +77,42 @@ extension ListTableViewController: UITableViewDelegate {
         }
         let callAction = UIAlertAction(title: "Call" + "123-000-\(indexPath.row)", style: .default, handler: callActionHandler)
         optionMenu.addAction(callAction)
-
+        
         // Check-in action
-        let checkInAction = UIAlertAction(title: "Check in", style: .default, handler: { (batatas: UIAlertAction!) -> Void in
-            let cell = tableView.cellForRow(at: indexPath)
-            cell?.accessoryType = .checkmark
-            self.restaurantNames[indexPath.row].isVisitedRestaurant = true
+        let checkInAction = UIAlertAction(title: "Check in", style: .default, handler: { (action: UIAlertAction!) -> Void in
+            let cell = tableView.cellForRow(at: indexPath) as! RestaurantTableViewCell
+            //cell?.accessoryType = .checkmark
+            if self.restaurantNames[indexPath.row].isVisitedRestaurant == false {
+                cell.checkInImageView.isHidden = false
+                self.restaurantNames[indexPath.row].isVisitedRestaurant = true
+            }
         })
         optionMenu.addAction(checkInAction)
+        
+        let confirmActionHandler = { (action: UIAlertAction!) -> Void in
+            let optionAlert = UIAlertController(title: "Confirm cancel", message: "Are you sure you want to cancel", preferredStyle: .alert)
+            let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let acceptAlert = UIAlertAction(title: "Remove", style: .default, handler: { (action: UIAlertAction) in
+                let cell = tableView.cellForRow(at: indexPath) as! RestaurantTableViewCell
+                //cell?.accessoryType = .none
+                cell.checkInImageView.isHidden = true
+                self.restaurantNames[indexPath.row].isVisitedRestaurant = false
+            })
+            //cancelAlert.addAction( UIAlertAction(title: "Yes", style: .default, handler: nil))
+            optionAlert.addAction(acceptAlert)
+            optionAlert.addAction(cancelAlert)
+            
+            self.present(optionAlert, animated: true, completion: nil)
+        }
+        let callActionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: confirmActionHandler)
+        optionMenu.addAction(callActionCancel)
+        
+        if let popoverController = optionMenu.popoverPresentationController {
+            if let cell = tableView.cellForRow(at: indexPath) {
+                popoverController.sourceView = cell
+                popoverController.sourceRect = cell.bounds
+            }
+        }
         
         present(optionMenu, animated: true, completion: nil)
         tableView.deselectRow(at: indexPath, animated: false)
@@ -107,17 +135,25 @@ extension ListTableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! RestaurantTableViewCell
         let nameRestaurant = restaurantNames[indexPath.row]
-
+        
         cell.nameLabel.text = nameRestaurant.nameRestaurant
         cell.locationLabel.text = nameRestaurant.locationRestaurant
         cell.typeLabel.text = nameRestaurant.typeRestaurant
         
         let imageName = nameRestaurant.imageNameRestaurant
         cell.thumbnailImageView.image = UIImage(named: imageName)
-            
+        cell.thumbnailImageView.layer.borderWidth = 3
+        cell.thumbnailImageView.layer.borderColor = UIColor.orange.cgColor
+        cell.checkInImageView.image = UIImage(named: "heart-tick")
+        if nameRestaurant.isVisitedRestaurant == true {
+            cell.checkInImageView.isHidden = false
+        } else {
+            cell.checkInImageView.isHidden = true
+        }
+
         return cell
     }
 }
