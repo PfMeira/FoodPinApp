@@ -15,6 +15,13 @@ class ListTableViewController: UIViewController {
     //    var restaurantTypes = ["Coffee & Tea Shop", "Cafe", "Tea House", "Austrian / Causal Drink", "French", "Bakery", "Bakery", "Chocolate", "Cafe", "American / Seafood", "American", "American", "Breakfast & Brunch", "Coffee & Tea", "Coffee & Tea ", "Latin American", "Spanish", "Spanish", "Spanish", "British", "Thai"]
     
     
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.delegate = self
+            tableView.dataSource = self
+        }
+    }
+    
     var restaurant = [["Cafe Deadend", "Hong kong","Coffee & Tea Shop", false],
                       ["Homei", "Hong kong","Cafe", false],
                       ["Teakha","Hong kong","Austrian / Causal Drink", false],
@@ -118,6 +125,70 @@ extension ListTableViewController: UITableViewDelegate {
         print(indexPath.row)
         return indexPath
     }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delectAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
+            self.restaurantNames.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+
+            completionHandler(true)
+        }
+        delectAction.backgroundColor = UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
+        delectAction.image = UIImage(named: "delete")
+        
+        let shareAction = UIContextualAction(style: .normal, title: "Share") { (action, sourceView, completionHandler) in
+            
+            let defaultText = "Just checkin in at \(self.restaurantNames[indexPath.row])"
+            let activityController: UIActivityViewController
+         
+            if let imageToShare = UIImage(named: self.restaurantNames[indexPath.row].nameRestaurant) {
+                activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
+            } else {
+                activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+            }
+            
+            if let popoverController = activityController.popoverPresentationController {
+                if let cell = tableView.cellForRow(at: indexPath){
+                    popoverController.sourceView = cell
+                    popoverController.sourceRect = cell.bounds
+                }
+            }
+            
+            self.present(activityController, animated: true, completion: nil)
+            completionHandler(true)
+        }
+        shareAction.backgroundColor = UIColor(red: 254.0/255.0, green: 149.0/255.0, blue: 38.0/255.0, alpha: 1.0)
+        shareAction.image = UIImage(named: "share")
+        
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [delectAction, shareAction])
+        return swipeConfiguration
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let checkInAction = UIContextualAction(style: .normal, title: "Check In") { (action, sourceView, completionHandler) in
+            
+            
+            
+            completionHandler(true)
+        }
+        if restaurantNames[indexPath.row].isVisitedRestaurant == false {
+            checkInAction.backgroundColor = UIColor(red: 54/255.0, green: 215/255.0, blue: 183/255.0, alpha: 1.0)
+            checkInAction.image = UIImage(named: "tick")
+            self.restaurantNames[indexPath.row].isVisitedRestaurant = true
+
+        } else {
+            checkInAction.backgroundColor = UIColor(red: 54/255.0, green: 215/255.0, blue: 183/255.0, alpha: 1.0)
+            checkInAction.image = UIImage(named: "undo")
+            self.restaurantNames[indexPath.row].isVisitedRestaurant = false
+        }
+
+        print("asdfd")
+        
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [checkInAction])
+        return swipeConfiguration
+    }
 }
 
 extension ListTableViewController: UITableViewDataSource {
@@ -131,10 +202,10 @@ extension ListTableViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == .delete {
-            restaurantNames.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
+//        if editingStyle == .delete {
+//            restaurantNames.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
         //tableView.reloadData()
     }
     
