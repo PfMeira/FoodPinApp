@@ -133,15 +133,16 @@ extension ListTableViewController: UITableViewDataSource {
         
         if editingStyle == .delete {
             restaurantNames.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
-        tableView.reloadData()
+        //tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! RestaurantTableViewCell
         let nameRestaurant = restaurantNames[indexPath.row]
-        
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! RestaurantTableViewCell        
         cell.nameLabel.text = nameRestaurant.nameRestaurant
         cell.locationLabel.text = nameRestaurant.locationRestaurant
         cell.typeLabel.text = nameRestaurant.typeRestaurant
@@ -157,7 +158,6 @@ extension ListTableViewController: UITableViewDataSource {
         } else {
             cell.checkInImageView.isHidden = true
         }
-
         return cell
     }
 }
