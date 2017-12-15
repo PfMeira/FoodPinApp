@@ -17,6 +17,7 @@
 		A3A3420B1FDB46C00082BF14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3A3420A1FDB46BF0082BF14 /* Assets.xcassets */; };
 		A3A342101FDB6E100082BF14 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A3420E1FDB6E100082BF14 /* RestaurantTableViewCell.swift */; };
 		A3A342111FDB6E100082BF14 /* RestaurantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3A3420F1FDB6E100082BF14 /* RestaurantTableViewCell.xib */; };
+		A3A342131FE330DB0082BF14 /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A342121FE330DB0082BF14 /* RestaurantDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		A3A3420A1FDB46BF0082BF14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3A3420E1FDB6E100082BF14 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		A3A3420F1FDB6E100082BF14 /* RestaurantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantTableViewCell.xib; sourceTree = "<group>"; };
+		A3A342121FE330DB0082BF14 /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				A3A341D91FD95DC20082BF14 /* ListTableViewController.swift */,
+				A3A342121FE330DB0082BF14 /* RestaurantDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			files = (
 				A3A342101FDB6E100082BF14 /* RestaurantTableViewCell.swift in Sources */,
 				A3A341DA1FD95DC20082BF14 /* ListTableViewController.swift in Sources */,
+				A3A342131FE330DB0082BF14 /* RestaurantDetailViewController.swift in Sources */,
 				A3A341D81FD95DC20082BF14 /* FoodPinAppDelegate.swift in Sources */,
 				A3A342091FD9AC750082BF14 /* Restaurant.swift in Sources */,
 			);
