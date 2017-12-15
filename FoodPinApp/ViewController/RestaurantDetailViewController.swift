@@ -10,27 +10,32 @@ import UIKit
 
 class RestaurantDetailViewController: UIViewController {
 
+    // MARK: - IBOutlet
+
     @IBOutlet var restaurantNameLabel: UILabel!
     @IBOutlet var restauranLocationLabel: UILabel!
     @IBOutlet var restaurantTypeLabel: UILabel!
     @IBOutlet var restaurantImageView: UIImageView!
-    
-    var restauranteName: String!
-    var restaurantlocation: String!
-    var restaurantType: String!
+   
+    // MARK: - Variable
+    var restauranteName = ""
+    var restaurantlocation = ""
+    var restaurantType = ""
     var restaurantImageName = ""
     
-    var restaurantDetails: [Restaurant] = [Restaurant]()
+    var restaurant: Restaurant = Restaurant()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
         
-        restaurantNameLabel.text = restauranteName
-        restauranLocationLabel.text = restaurantlocation
-        restaurantTypeLabel.text = restaurantType
-        restaurantImageView.image = UIImage(named: restaurantImageName)        
+        self.title = restaurant.nameRestaurant
+        
+        restaurantNameLabel.text = restaurant.nameRestaurant
+        restauranLocationLabel.text = restaurant.locationRestaurant
+        restaurantTypeLabel.text = restaurant.typeRestaurant
+        restaurantImageView.image = UIImage(named: restaurant.imageNameRestaurant)
     }
 
     override func didReceiveMemoryWarning() {

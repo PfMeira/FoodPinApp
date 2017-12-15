@@ -105,14 +105,12 @@
 		A3A341D61FD95DC20082BF14 /* FoodPinApp */ = {
 			isa = PBXGroup;
 			children = (
+				A3E848CA1FE48F9B003D3D90 /* Storyboard */,
 				A3A342051FD97E800082BF14 /* AppDelegate */,
 				A3A3420C1FDB6DBB0082BF14 /* Views */,
 				A3A342061FD98C990082BF14 /* ViewController */,
-				A3A342071FD9AC4F0082BF14 /* Struct */,
-				A3A341DB1FD95DC20082BF14 /* Main.storyboard */,
-				A3A341E01FD95DC20082BF14 /* LaunchScreen.storyboard */,
-				A3A3420A1FDB46BF0082BF14 /* Assets.xcassets */,
-				A3A341E31FD95DC20082BF14 /* Info.plist */,
+				A3A342071FD9AC4F0082BF14 /* Model */,
+				A3E848CB1FE4901E003D3D90 /* Resources */,
 			);
 			path = FoodPinApp;
 			sourceTree = "<group>";
@@ -152,12 +150,12 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		A3A342071FD9AC4F0082BF14 /* Struct */ = {
+		A3A342071FD9AC4F0082BF14 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				A3A342081FD9AC750082BF14 /* Restaurant.swift */,
 			);
-			path = Struct;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A3A3420C1FDB6DBB0082BF14 /* Views */ = {
@@ -175,6 +173,24 @@
 				A3A3420F1FDB6E100082BF14 /* RestaurantTableViewCell.xib */,
 			);
 			path = Restaurant;
+			sourceTree = "<group>";
+		};
+		A3E848CA1FE48F9B003D3D90 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A3A341DB1FD95DC20082BF14 /* Main.storyboard */,
+				A3A341E01FD95DC20082BF14 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		A3E848CB1FE4901E003D3D90 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A3A3420A1FDB46BF0082BF14 /* Assets.xcassets */,
+				A3A341E31FD95DC20082BF14 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -484,7 +500,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = FoodPinApp/Info.plist;
+				INFOPLIST_FILE = FoodPinApp/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pfmeira.FoodPinApp;
@@ -500,7 +516,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = FoodPinApp/Info.plist;
+				INFOPLIST_FILE = FoodPinApp/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pfmeira.FoodPinApp;

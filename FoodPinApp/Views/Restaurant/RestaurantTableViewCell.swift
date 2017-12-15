@@ -9,7 +9,8 @@
 import UIKit
 
 class RestaurantTableViewCell: UITableViewCell {
-
+   
+    // MARK: - IBOutlet
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet var typeLabel: UILabel!
