@@ -35,6 +35,7 @@ class RestaurantDetailViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .never
+        tableView.separatorStyle = .none
         
         self.title = restaurant.name
         headerView.headerImageView.image = UIImage(named: restaurant.image)
