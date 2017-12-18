@@ -12,30 +12,36 @@ class RestaurantDetailViewController: UIViewController {
 
     // MARK: - IBOutlet
 
+    @IBOutlet var tableView: UITableView! {
+        didSet {
+            tableView.delegate = self
+            tableView.dataSource = self
+        }
+    }
+    
+    @IBOutlet var headerView: RestaurantDetailHeaderView!
+    
     @IBOutlet var restaurantNameLabel: UILabel!
     @IBOutlet var restauranLocationLabel: UILabel!
     @IBOutlet var restaurantTypeLabel: UILabel!
     @IBOutlet var restaurantImageView: UIImageView!
    
     // MARK: - Variable
-    var restauranteName = ""
-    var restaurantlocation = ""
-    var restaurantType = ""
-    var restaurantImageName = ""
     
     var restaurant: Restaurant = Restaurant()
     
     override func viewDidLoad() {
-        
+
         super.viewDidLoad()
+        
         navigationItem.largeTitleDisplayMode = .never
         
-        self.title = restaurant.nameRestaurant
-        
-        restaurantNameLabel.text = restaurant.nameRestaurant
-        restauranLocationLabel.text = restaurant.locationRestaurant
-        restaurantTypeLabel.text = restaurant.typeRestaurant
-        restaurantImageView.image = UIImage(named: restaurant.imageNameRestaurant)
+        self.title = restaurant.name
+        headerView.headerImageView.image = UIImage(named: restaurant.image)
+        headerView.nameLabel.text = restaurant.name
+        headerView.typeLabel.text = restaurant.type
+        headerView.typeLabel.layer.cornerRadius = 5 
+        headerView.heartImageView.isHidden = (restaurant.isVisited) ? false : true
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,7 +49,6 @@ class RestaurantDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -55,3 +60,43 @@ class RestaurantDetailViewController: UIViewController {
     */
 
 }
+
+extension RestaurantDetailViewController: UITableViewDataSource {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        switch indexPath.row {
+            
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantDetailIconTextCell", for: indexPath) as! RestaurantDetailIconTextCell // String(describing: RestaurantDetailIconTextCell.self), for: indexPath) as! RestaurantDetailIconTextCell
+            cell.iconImageView.image = UIImage(named: "phone")
+            cell.shortTextLabel.text = restaurant.phone
+            return cell
+            
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailIconTextCell.self), for: indexPath) as! RestaurantDetailIconTextCell
+            cell.iconImageView.image = UIImage(named: "map")
+            cell.shortTextLabel.text = restaurant.location
+            return cell
+            
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailTextCell.self), for: indexPath) as! RestaurantDetailTextCell
+            cell.descriptionLabel.text = restaurant.description
+            return cell
+            
+        default:
+            fatalError("Failed to instantiate the table view cell for detail ciew cont roller")
+        }
+    }
+}
+
+extension RestaurantDetailViewController: UITableViewDelegate {
+}
+

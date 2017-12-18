@@ -11,20 +11,24 @@ import UIKit
 //struct
 class Restaurant {
     
-    let nameRestaurant: String
-    let locationRestaurant: String
-    let typeRestaurant: String
-    let imageNameRestaurant: String
-    var isVisitedRestaurant: Bool
-    
+    let name: String
+    let location: String
+    let type: String
+    let description: String
+    let phone: String
+    let image: String
+    var isVisited: Bool
+
     //init(data: [Any]) {
-    init(name: String,  location: String, type: String, imageName: String, isVisited: Bool) {
-    
-        nameRestaurant = name //data[0] as! String
-        locationRestaurant = location //data[1] as! String
-        typeRestaurant = type //data[2] as! String
-        imageNameRestaurant = imageName //nameRestaurant
-        isVisitedRestaurant = isVisited //data[3] as! Bool
+    init(name: String, type: String, location: String, phone: String, description: String, image: String, isVisited: Bool) {
+
+        self.name = name //data[0] as! String
+        self.type = type //data[2] as! String
+        self.location = location //data[1] as! String
+        self.phone = phone
+        self.description = description
+        self.image = image //nameRestaurant
+        self.isVisited = isVisited //data[3] as! Bool
     }
     
 //    convenience init() {
@@ -35,7 +39,7 @@ class Restaurant {
 extension Restaurant {
     
     convenience init() {
-        self.init(name: "",  location: "", type: "", imageName: "", isVisited: false)
+        self.init(name: "",  type: "", location: "", phone: "", description: "", image: "", isVisited: false)
     }
 }
 
