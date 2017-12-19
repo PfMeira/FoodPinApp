@@ -18,31 +18,29 @@ class RestaurantDetailViewController: UIViewController {
             tableView.dataSource = self
         }
     }
-    
     @IBOutlet var headerView: RestaurantDetailHeaderView!
-    
-    @IBOutlet var restaurantNameLabel: UILabel!
-    @IBOutlet var restauranLocationLabel: UILabel!
-    @IBOutlet var restaurantTypeLabel: UILabel!
-    @IBOutlet var restaurantImageView: UIImageView!
    
     // MARK: - Variable
-    
     var restaurant: Restaurant = Restaurant()
     
+    // MARK: - View Did Load
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
         
-        
+        // MARK: - NavigationViewController
+        navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.tintColor = .white
-
-        // navigationItem.largeTitleDisplayMode = .never
+        navigationController?.hidesBarsOnSwipe = false
+        
+        // MARK: - Table View
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.separatorStyle = .none
         
+        // MARK: - NavigationViewController
         headerView.headerImageView.image = UIImage(named: restaurant.image)
         headerView.nameLabel.text = restaurant.name
         headerView.typeLabel.text = restaurant.type
@@ -58,6 +56,7 @@ class RestaurantDetailViewController: UIViewController {
          return true
       }
     
+    
     /*
     // MARK: - Navigation
 
@@ -67,7 +66,8 @@ class RestaurantDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    
 }
 
 extension RestaurantDetailViewController: UITableViewDataSource {
@@ -84,7 +84,8 @@ extension RestaurantDetailViewController: UITableViewDataSource {
         switch indexPath.row {
             
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantDetailIconTextCell", for: indexPath) as! RestaurantDetailIconTextCell // String(describing: RestaurantDetailIconTextCell.self), for: indexPath) as! RestaurantDetailIconTextCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantDetailIconTextCell", for: indexPath) as! RestaurantDetailIconTextCell
+            // String(describing: RestaurantDetailIconTextCell.self), for: indexPath) as! RestaurantDetailIconTextCell
             cell.iconImageView.image = UIImage(named: "phone")
             cell.shortTextLabel.text = restaurant.phone
             return cell

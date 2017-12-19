@@ -51,12 +51,14 @@ class ListTableViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         if let customFont = UIFont(name: "Rubik-Medium", size: 40.0) { //UIFont(name: "Rubik-Medium", size: 40.0) {
             navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0), NSAttributedStringKey.font: customFont]
         }
-        
+
+        navigationController?.hidesBarsOnSwipe = false
         for fRestaurant in restaurant {
             
             let rName = fRestaurant[0] as! String
@@ -70,7 +72,13 @@ class ListTableViewController: UIViewController {
             let newRestaurant = Restaurant.init(name: rName, type: rType, location: rLocation, phone: rPhone, description: rDescription, image: rImage, isVisited: rIsVisited)
             restaurants.append(newRestaurant)
         }
-        navigationController?.navigationBar.prefersLargeTitles = true
+        tableView.cellLayoutMarginsFollowReadableWidth = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        navigationController?.hidesBarsOnSwipe = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -85,10 +93,8 @@ class ListTableViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "showRestauranteDetails" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                
                 let destination = segue.destination as! RestaurantDetailViewController
                 destination.restaurant = restaurants[indexPath.row]
             }
