@@ -34,10 +34,15 @@ class RestaurantDetailViewController: UIViewController {
 
         super.viewDidLoad()
         
-        navigationItem.largeTitleDisplayMode = .never
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.tintColor = .white
+
+        // navigationItem.largeTitleDisplayMode = .never
+        tableView.contentInsetAdjustmentBehavior = .never
         tableView.separatorStyle = .none
         
-        self.title = restaurant.name
         headerView.headerImageView.image = UIImage(named: restaurant.image)
         headerView.nameLabel.text = restaurant.name
         headerView.typeLabel.text = restaurant.type
@@ -49,6 +54,9 @@ class RestaurantDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+      override var prefersStatusBarHidden: Bool {
+         return true
+      }
     
     /*
     // MARK: - Navigation
