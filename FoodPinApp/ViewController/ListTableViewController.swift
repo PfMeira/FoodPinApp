@@ -174,11 +174,11 @@ extension ListTableViewController: UITableViewDelegate {
         }
 
         if self.restaurants[indexPath.row].isVisited == false {
-            checkInAction.backgroundColor = UIColor(red: 54/255.0, green: 215/255.0, blue: 183/255.0, alpha: 1.0)
+            checkInAction.backgroundColor = UIColor(red: 39, green: 174, blue: 96)
             checkInAction.image = UIImage(named: "tick")
             
         } else {
-            checkInAction.backgroundColor = UIColor(red: 54/255.0, green: 215/255.0, blue: 183/255.0, alpha: 1.0)
+            checkInAction.backgroundColor = UIColor(red: 39, green: 174, blue: 96)
             checkInAction.image = UIImage(named: "undo")
         }
         

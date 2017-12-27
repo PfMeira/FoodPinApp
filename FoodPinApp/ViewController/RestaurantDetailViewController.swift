@@ -23,6 +23,12 @@ class RestaurantDetailViewController: UIViewController {
     // MARK: - Variable
     var restaurant: Restaurant = Restaurant()
     
+    // MARK: - Status Bar Light Style
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: - View Did Load
 
     override func viewDidLoad() {
@@ -70,7 +76,6 @@ class RestaurantDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
     
 }
 
