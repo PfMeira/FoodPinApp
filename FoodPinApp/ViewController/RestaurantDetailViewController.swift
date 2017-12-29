@@ -83,7 +83,7 @@ extension RestaurantDetailViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 5// 3
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -109,6 +109,17 @@ extension RestaurantDetailViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailTextCell.self), for: indexPath) as! RestaurantDetailTextCell
             cell.descriptionLabel.text = restaurant.description
             return cell
+            
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantDetailSeparatorCell", for: indexPath) as! RestaurantDetailSeparatorCell
+            cell.titleLabel.text = "HOW TO GET HERE"
+            return cell
+            
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantDetailMapCell", for: indexPath) as! RestaurantDetailMapCell
+            return cell
+            
+            //RestaurantDetailMapCell
             
         default:
             fatalError("Failed to instantiate the table view cell for detail ciew cont roller")
