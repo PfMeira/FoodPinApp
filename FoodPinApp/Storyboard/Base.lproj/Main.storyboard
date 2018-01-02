@@ -345,6 +345,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="mapView" destination="3Rj-U1-eLq" id="hnk-Dr-chj"/>
+                                            <segue destination="KYc-cR-P96" kind="show" identifier="showMap" trigger="accessoryAction" id="9nV-ck-jYN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -368,6 +369,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tUB-XP-LDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1786.4000000000001" y="121.4392803598201"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="vgj-1T-pEp">
+            <objects>
+                <viewController id="KYc-cR-P96" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Ih-X5-rP5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dGs-Nz-ps0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dGs-Nz-ps0" firstAttribute="top" secondItem="4Ih-X5-rP5" secondAttribute="top" id="Tba-if-Knt"/>
+                            <constraint firstItem="dGs-Nz-ps0" firstAttribute="leading" secondItem="Qp3-Nf-6J8" secondAttribute="leading" id="aVA-I8-eUk"/>
+                            <constraint firstItem="dGs-Nz-ps0" firstAttribute="trailing" secondItem="Qp3-Nf-6J8" secondAttribute="trailing" id="yPk-SR-gJK"/>
+                            <constraint firstItem="dGs-Nz-ps0" firstAttribute="bottom" secondItem="Qp3-Nf-6J8" secondAttribute="bottom" id="zhl-nt-Vga"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Qp3-Nf-6J8"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8js-l2-Qhm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3015" y="122"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tOi-W3-9tr">

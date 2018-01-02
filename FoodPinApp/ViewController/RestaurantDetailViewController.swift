@@ -77,6 +77,14 @@ class RestaurantDetailViewController: UIViewController {
     }
     */
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMap" {
+//            if let viewController = segue.destinationViewController as? MapViewController {
+//            }
+        }
+    }
+
+    
 }
 
 extension RestaurantDetailViewController: UITableViewDataSource {
@@ -117,6 +125,7 @@ extension RestaurantDetailViewController: UITableViewDataSource {
             
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantDetailMapCell", for: indexPath) as! RestaurantDetailMapCell
+            cell.configure(localiton: restaurant.location)
             return cell
             
             //RestaurantDetailMapCell
@@ -128,5 +137,12 @@ extension RestaurantDetailViewController: UITableViewDataSource {
 }
 
 extension RestaurantDetailViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        if indexPath.row == 4 {
+            performSegue(withIdentifier: "showMap", sender: nil)
+        }
+    }
 }
 
