@@ -141,11 +141,11 @@
             <objects>
                 <viewController id="6hu-WO-8aG" customClass="RestaurantDetailViewController" customModule="FoodPinApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Ca-7v-OY4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8zK-P9-Xsm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="HNI-6J-Rid" userLabel="Header View" customClass="RestaurantDetailHeaderView" customModule="FoodPinApp" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
@@ -210,6 +210,35 @@
                                         <outlet property="nameLabel" destination="Iaj-BR-5MW" id="Z6K-Gb-Vcb"/>
                                         <outlet property="typeLabel" destination="Dqu-wU-DSd" id="mox-5u-tdp"/>
                                     </connections>
+                                </view>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="fFg-BG-bK3">
+                                    <rect key="frame" x="0.0" y="810" width="375" height="90"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTf-Ta-iPU">
+                                            <rect key="frame" x="15" y="29" width="345" height="47"/>
+                                            <color key="backgroundColor" red="0.90588235294117647" green="0.29803921568627451" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="47" id="HtD-jP-xEx"/>
+                                                <constraint firstAttribute="width" constant="345" id="ovT-A6-vrH"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <state key="normal" title="Rate it">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="25"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="vTf-Ta-iPU" secondAttribute="bottom" constant="14" id="68S-qI-EQD"/>
+                                        <constraint firstItem="vTf-Ta-iPU" firstAttribute="leading" secondItem="fFg-BG-bK3" secondAttribute="leading" constant="15" id="Eqe-Wz-Z7x"/>
+                                        <constraint firstAttribute="trailing" secondItem="vTf-Ta-iPU" secondAttribute="trailing" constant="15" id="GK0-3E-mpV"/>
+                                    </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationLevel="1" indentationWidth="10" reuseIdentifier="RestaurantDetailIconTextCell" id="ovF-V3-3Pt" customClass="RestaurantDetailIconTextCell" customModule="FoodPinApp" customModuleProvider="target">
@@ -360,7 +389,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YzV-0I-sod"/>
                     </view>
-                    <size key="freeformSize" width="375" height="900"/>
+                    <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="headerView" destination="HNI-6J-Rid" id="nRx-44-lpF"/>
                         <outlet property="tableView" destination="8zK-P9-Xsm" id="yqq-yZ-7Cc"/>
@@ -370,10 +399,10 @@
             </objects>
             <point key="canvasLocation" x="1786.4000000000001" y="121.4392803598201"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="vgj-1T-pEp">
             <objects>
-                <viewController id="KYc-cR-P96" sceneMemberID="viewController">
+                <viewController id="KYc-cR-P96" customClass="MapViewController" customModule="FoodPinApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Ih-X5-rP5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -391,6 +420,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qp3-Nf-6J8"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="dGs-Nz-ps0" id="RE9-rW-MrX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8js-l2-Qhm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

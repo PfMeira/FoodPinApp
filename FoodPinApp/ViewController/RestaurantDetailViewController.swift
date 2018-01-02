@@ -9,9 +9,9 @@
 import UIKit
 
 class RestaurantDetailViewController: UIViewController {
-
+    
     // MARK: - IBOutlet
-
+    
     @IBOutlet var tableView: UITableView! {
         didSet {
             tableView.delegate = self
@@ -19,20 +19,20 @@ class RestaurantDetailViewController: UIViewController {
         }
     }
     @IBOutlet var headerView: RestaurantDetailHeaderView!
-   
+    
     // MARK: - Variable
     var restaurant: Restaurant = Restaurant()
     
     // MARK: - Status Bar Light Style
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
     // MARK: - View Did Load
-
+    
     override func viewDidLoad() {
-
+        
         super.viewDidLoad()
         
         // MARK: - NavigationViewController
@@ -53,37 +53,32 @@ class RestaurantDetailViewController: UIViewController {
         headerView.typeLabel.layer.cornerRadius = 5 
         headerView.heartImageView.isHidden = (restaurant.isVisited) ? false : true
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-      override var prefersStatusBarHidden: Bool {
-         return false
-      }
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.hidesBarsOnSwipe = false
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    /*
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-    }
-    */
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMap" {
-//            if let viewController = segue.destinationViewController as? MapViewController {
-//            }
+            let destinationController = segue.destination as? MapViewController
+            destinationController?.restaurant = restaurant
         }
     }
-
     
 }
 
@@ -93,13 +88,14 @@ extension RestaurantDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5// 3
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.row {
-            
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantDetailIconTextCell", for: indexPath) as! RestaurantDetailIconTextCell
             // String(describing: RestaurantDetailIconTextCell.self), for: indexPath) as! RestaurantDetailIconTextCell
@@ -128,8 +124,6 @@ extension RestaurantDetailViewController: UITableViewDataSource {
             cell.configure(localiton: restaurant.location)
             return cell
             
-            //RestaurantDetailMapCell
-            
         default:
             fatalError("Failed to instantiate the table view cell for detail ciew cont roller")
         }
@@ -139,7 +133,7 @@ extension RestaurantDetailViewController: UITableViewDataSource {
 extension RestaurantDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
         if indexPath.row == 4 {
             performSegue(withIdentifier: "showMap", sender: nil)
         }
