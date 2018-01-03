@@ -231,6 +231,9 @@
                                                     <integer key="value" value="25"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <segue destination="gjR-p0-2Sv" kind="presentation" identifier="showReviewSegue" modalTransitionStyle="crossDissolve" id="158-W6-ayv"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -426,7 +429,78 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8js-l2-Qhm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3015" y="122"/>
+            <point key="canvasLocation" x="2788" y="100"/>
+        </scene>
+        <!--Review View Controller-->
+        <scene sceneID="sUl-us-T53">
+            <objects>
+                <viewController id="gjR-p0-2Sv" customClass="ReviewViewController" customModule="FoodPinApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E9i-lV-I8N">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IbH-vS-rib">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAo-E7-OJd">
+                                <rect key="frame" x="319" y="28" width="33" height="32"/>
+                                <state key="normal" image="cross"/>
+                                <connections>
+                                    <segue destination="Ldu-qK-x7M" kind="unwind" unwindAction="closeWithSegue:" id="Wst-VN-hx8"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Sxg-H1-ibH">
+                                <rect key="frame" x="74" y="93" width="227" height="481"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1VR-Qf-q7A">
+                                        <rect key="frame" x="0.0" y="0.0" width="188" height="82"/>
+                                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
+                                        <state key="normal" title="Love" image="love"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OwK-mI-6Mp">
+                                        <rect key="frame" x="0.0" y="92" width="181" height="83"/>
+                                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
+                                        <state key="normal" title="Cool" image="cool"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAC-M8-7Ia">
+                                        <rect key="frame" x="0.0" y="185" width="227" height="86"/>
+                                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
+                                        <state key="normal" title="Happy" image="happy"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZZ-nz-22i">
+                                        <rect key="frame" x="0.0" y="281" width="167" height="87"/>
+                                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
+                                        <state key="normal" title="Sad" image="sad"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfc-B8-TLq">
+                                        <rect key="frame" x="0.0" y="378" width="218" height="103"/>
+                                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
+                                        <state key="normal" title="Angry" image="angry"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Sxg-H1-ibH" firstAttribute="centerX" secondItem="E9i-lV-I8N" secondAttribute="centerX" id="3zh-Nf-KIW"/>
+                            <constraint firstItem="XlZ-e7-W8v" firstAttribute="bottom" secondItem="IbH-vS-rib" secondAttribute="bottom" id="8nW-wK-28H"/>
+                            <constraint firstItem="IbH-vS-rib" firstAttribute="leading" secondItem="XlZ-e7-W8v" secondAttribute="leading" id="H1a-NZ-LSb"/>
+                            <constraint firstItem="GAo-E7-OJd" firstAttribute="top" secondItem="E9i-lV-I8N" secondAttribute="top" constant="28" id="KBZ-IQ-8Uh"/>
+                            <constraint firstItem="XlZ-e7-W8v" firstAttribute="trailing" secondItem="GAo-E7-OJd" secondAttribute="trailing" constant="23" id="NEQ-or-r99"/>
+                            <constraint firstItem="IbH-vS-rib" firstAttribute="trailing" secondItem="XlZ-e7-W8v" secondAttribute="trailing" id="Qk9-hS-dTI"/>
+                            <constraint firstItem="Sxg-H1-ibH" firstAttribute="centerY" secondItem="E9i-lV-I8N" secondAttribute="centerY" id="Y9b-mI-Ek9"/>
+                            <constraint firstItem="IbH-vS-rib" firstAttribute="top" secondItem="E9i-lV-I8N" secondAttribute="top" id="nBE-Jq-wgO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XlZ-e7-W8v"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="IbH-vS-rib" id="2Dx-z6-gHD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aab-Vf-hhp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Ldu-qK-x7M" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2578" y="836"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tOi-W3-9tr">
@@ -448,6 +522,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="angry" width="78" height="103"/>
+        <image name="cool" width="78" height="83"/>
+        <image name="cross" width="33" height="32"/>
+        <image name="happy" width="78" height="86"/>
         <image name="heart-tick" width="22" height="21"/>
+        <image name="love" width="78" height="82"/>
+        <image name="sad" width="78" height="87"/>
     </resources>
 </document>
