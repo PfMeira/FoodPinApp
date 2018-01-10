@@ -18,9 +18,10 @@ class Restaurant {
     let phone: String
     let image: String
     var isVisited: Bool
+    var rating: String
 
     //init(data: [Any]) {
-    init(name: String, type: String, location: String, phone: String, description: String, image: String, isVisited: Bool) {
+    init(name: String, type: String, location: String, phone: String, description: String, image: String, isVisited: Bool, rating: String = "") {
 
         self.name = name //data[0] as! String
         self.type = type //data[2] as! String
@@ -29,6 +30,7 @@ class Restaurant {
         self.description = description
         self.image = image //nameRestaurant
         self.isVisited = isVisited //data[3] as! Bool
+        self.rating = rating
     }
     
 //    convenience init() {
