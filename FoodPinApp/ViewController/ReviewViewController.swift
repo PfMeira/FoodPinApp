@@ -12,6 +12,7 @@ class ReviewViewController: UIViewController {
     
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var rateButtons: [UIButton]!
+    @IBOutlet var closeButton: UIButton!
     
     var restaurant = Restaurant()
     
@@ -34,6 +35,11 @@ class ReviewViewController: UIViewController {
             rateButton.transform = moveScaleTransform
             rateButton.alpha = 0
         }
+        let moveUpTransform = CGAffineTransform.init(translationX: 0, y: -800)
+        closeButton.transform = moveUpTransform
+        
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +50,10 @@ class ReviewViewController: UIViewController {
                 self.rateButtons[item].transform = .identity
             }, completion: nil)
         }
+        
+        UIView.animate(withDuration: 0.3, delay: 0.5, options: [], animations: {
+            self.closeButton.transform = .identity
+        }, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

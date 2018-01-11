@@ -86,10 +86,7 @@ class RestaurantDetailViewController: UIViewController {
     }
     
     @IBAction func close(segue: UIStoryboardSegue) {
-     
-        if segue.identifier == "showReviewSegue" {
-            print("showReviewSegue")
-        }
+
         dismiss(animated: true, completion: nil)
     }
     

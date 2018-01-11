@@ -169,7 +169,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iaj-BR-5MW">
-                                            <rect key="frame" x="14" y="272" width="86" height="41"/>
+                                            <rect key="frame" x="14" y="272" width="88" height="41"/>
                                             <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="35"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -272,7 +272,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAG-zY-adg">
-                                                            <rect key="frame" x="30" y="7.5" width="317" height="16.5"/>
+                                                            <rect key="frame" x="30" y="7.5" width="317" height="17"/>
                                                             <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -460,10 +460,10 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Sxg-H1-ibH">
-                                <rect key="frame" x="74.5" y="93" width="226" height="481"/>
+                                <rect key="frame" x="74" y="93" width="227" height="481"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1VR-Qf-q7A">
-                                        <rect key="frame" x="0.0" y="0.0" width="187" height="82"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="188" height="82"/>
                                         <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
                                         <state key="normal" title="Love" image="love"/>
                                         <connections>
@@ -471,7 +471,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OwK-mI-6Mp">
-                                        <rect key="frame" x="0.0" y="92" width="183" height="83"/>
+                                        <rect key="frame" x="0.0" y="92" width="181" height="83"/>
                                         <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
                                         <state key="normal" title="Cool" image="cool"/>
                                         <connections>
@@ -479,7 +479,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAC-M8-7Ia">
-                                        <rect key="frame" x="0.0" y="185" width="226" height="86"/>
+                                        <rect key="frame" x="0.0" y="185" width="227" height="86"/>
                                         <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
                                         <state key="normal" title="Happy" image="happy"/>
                                         <connections>
@@ -495,7 +495,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfc-B8-TLq">
-                                        <rect key="frame" x="0.0" y="378" width="209" height="103"/>
+                                        <rect key="frame" x="0.0" y="378" width="218" height="103"/>
                                         <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
                                         <state key="normal" title="Angry" image="angry"/>
                                         <connections>
@@ -520,6 +520,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="IbH-vS-rib" id="2Dx-z6-gHD"/>
+                        <outlet property="closeButton" destination="GAo-E7-OJd" id="Boe-0d-KiS"/>
                         <outletCollection property="rateButtons" destination="1VR-Qf-q7A" collectionClass="NSMutableArray" id="0Q1-5Z-LqF"/>
                         <outletCollection property="rateButtons" destination="OwK-mI-6Mp" collectionClass="NSMutableArray" id="yBT-UP-5LO"/>
                         <outletCollection property="rateButtons" destination="DAC-M8-7Ia" collectionClass="NSMutableArray" id="gro-Ow-tD7"/>
