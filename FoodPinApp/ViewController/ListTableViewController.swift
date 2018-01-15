@@ -103,9 +103,10 @@ class ListTableViewController: UIViewController {
     
     // MARK: - Close Button
     
-    @IBAction func unwindHome(segue: UIStoryboard) {
+    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
         dismiss(animated: true, completion: nil)
     }
+    
 }
 
 // MARK: - Table view delegate

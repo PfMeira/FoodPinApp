@@ -127,6 +127,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Food Pin" id="EDM-tu-dIe">
                         <barButtonItem key="backBarButtonItem" title=" " id="8UE-3A-i8q"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="w6J-wE-BB8">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="4kZ-SW-ICZ" kind="presentation" id="zBU-gG-UyR"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="mPy-Ke-mgZ" id="Xrv-YF-abe"/>
@@ -134,12 +140,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="930" y="122"/>
+            <point key="canvasLocation" x="874" y="641"/>
         </scene>
-        <!--Table View Controller-->
+        <!--New Restaurant-->
         <scene sceneID="es8-wS-IWQ">
             <objects>
-                <tableViewController id="ZLI-ti-x35" sceneMemberID="viewController">
+                <tableViewController id="ZLI-ti-x35" customClass="NewRestaurantTableViewController" customModule="FoodPinApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2ga-Mx-L8R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -185,10 +191,11 @@
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fill in the restaurant name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZEm-p6-0jZ">
-                                                            <rect key="frame" x="0.0" y="25.5" width="171.5" height="34.5"/>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fill in the restaurant name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZEm-p6-0jZ" customClass="RoundedTextField" customModule="FoodPinApp" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="25.5" width="201.5" height="34.5"/>
+                                                            <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="textColor"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                     </subviews>
@@ -218,10 +225,11 @@
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fill in the restaurant Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MrU-df-dYr">
-                                                            <rect key="frame" x="0.0" y="25.5" width="167.5" height="34.5"/>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fill in the restaurant Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MrU-df-dYr" customClass="RoundedTextField" customModule="FoodPinApp" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="25.5" width="196.5" height="34.5"/>
+                                                            <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="textColor"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                     </subviews>
@@ -251,10 +259,11 @@
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fill in the restaurant Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7L0-pe-CrC">
-                                                            <rect key="frame" x="0.0" y="25.5" width="188.5" height="34.5"/>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fill in the restaurant Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7L0-pe-CrC" customClass="RoundedTextField" customModule="FoodPinApp" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="25.5" width="222" height="34.5"/>
+                                                            <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="textColor"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                     </subviews>
@@ -284,10 +293,11 @@
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fill in the restaurant Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kAb-g6-lDx">
-                                                            <rect key="frame" x="0.0" y="25.5" width="176.5" height="34.5"/>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fill in the restaurant Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kAb-g6-lDx" customClass="RoundedTextField" customModule="FoodPinApp" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="25.5" width="208" height="34.5"/>
+                                                            <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="textColor"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                     </subviews>
@@ -313,6 +323,7 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEW-tg-hKr">
                                                             <rect key="frame" x="0.0" y="0.0" width="112.5" height="20.5"/>
+                                                            <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -320,7 +331,7 @@
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="A great restaurant to try out " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PY4-50-BAa">
                                                             <rect key="frame" x="0.0" y="20.5" width="343" height="76.5"/>
                                                             <color key="backgroundColor" white="0.66666666666666663" alpha="0.40156785102739728" colorSpace="calibratedWhite"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
                                                     </subviews>
@@ -342,12 +353,27 @@
                             <outlet property="delegate" destination="ZLI-ti-x35" id="5FJ-4x-QBP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ag3-BY-F9t"/>
+                    <navigationItem key="navigationItem" title="New Restaurant" id="ag3-BY-F9t">
+                        <barButtonItem key="leftBarButtonItem" image="close" id="zBk-9F-9OB">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="MDS-Fl-hkO" kind="unwind" unwindAction="unwindToHomeWithSegue:" id="N9B-zS-fLD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <size key="freeformSize" width="375" height="900"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="7L0-pe-CrC" id="4kp-Ia-0oJ"/>
+                        <outlet property="descriptionTextView" destination="PY4-50-BAa" id="M6o-uz-yKk"/>
+                        <outlet property="nameTextField" destination="ZEm-p6-0jZ" id="unv-du-bIU"/>
+                        <outlet property="phoneTextField" destination="kAb-g6-lDx" id="CkQ-kq-i9Z"/>
+                        <outlet property="typeTextField" destination="MrU-df-dYr" id="oc1-mm-z3k"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2WS-xf-dwW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="MDS-Fl-hkO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1268" y="938.2308845577212"/>
+            <point key="canvasLocation" x="2911" y="1163"/>
         </scene>
         <!--Restaurant Detail View Controller-->
         <scene sceneID="3Z3-DS-OFU">
@@ -652,7 +678,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8js-l2-Qhm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2561" y="100"/>
+            <point key="canvasLocation" x="2892" y="-672"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="sUl-us-T53">
@@ -744,7 +770,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aab-Vf-hhp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Ldu-qK-x7M" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3255.1999999999998" y="834.33283358320841"/>
+            <point key="canvasLocation" x="2892" y="144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tOi-W3-9tr">
@@ -762,15 +788,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crR-FC-fTK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="66" y="116"/>
+            <point key="canvasLocation" x="-73" y="641"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hkx-Xc-wp6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4kZ-SW-ICZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7Cl-0l-No5">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="7Cl-0l-No5">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -780,11 +806,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOP-mR-Wd1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="98" y="939"/>
+            <point key="canvasLocation" x="2126" y="1164"/>
         </scene>
     </scenes>
     <resources>
         <image name="angry" width="78" height="103"/>
+        <image name="close" width="16" height="16"/>
         <image name="cool" width="78" height="83"/>
         <image name="cross" width="33" height="32"/>
         <image name="happy" width="78" height="86"/>
