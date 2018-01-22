@@ -47,6 +47,8 @@ class NewRestaurantTableViewController: UITableViewController {
         }
     }
     
+    @IBOutlet var photoImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,7 +60,8 @@ class NewRestaurantTableViewController: UITableViewController {
         if let customFont = UIFont(name: "Rubik-Medium", size: 35.0) {
             navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red: 231, green: 76, blue: 60), NSAttributedStringKey.font: customFont]
         }
-        
+        tableView.separatorStyle = .none
+
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -71,6 +74,51 @@ class NewRestaurantTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - Func Save Restaurant
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+
+        if nameTextField.text != "" {
+            if typeTextField.text != "" {
+                if addressTextField.text != "" {
+                    if phoneTextField.text != "" {
+                        if descriptionTextView.text != "" {
+                            print("Name: \(String(describing: nameTextField.text))")
+                            print("Type: \(String(describing: typeTextField.text))")
+                            print("Address: \(String(describing: addressTextField.text))")
+                            print("Phone: \(String(describing: phoneTextField))")
+                            print("Description: \(String(describing: descriptionTextView))")
+                            dismiss(animated: true, completion: nil)
+                        } else {
+                            alertViewPopUp(fieldName: "restaurant description")
+                        }
+                    } else {
+                        alertViewPopUp(fieldName: "restaurant phone")
+                    }
+                } else {
+                    alertViewPopUp(fieldName: "restaurant address")
+                }
+            } else {
+                alertViewPopUp(fieldName: "restaurant type")
+            }
+        } else {
+            alertViewPopUp(fieldName: "restaurant UITextViewDelegate")
+        }
+    }
+    
+    // MARK:  - Alert View
+    
+    func alertViewPopUp(fieldName: String) {
+    
+        let actionCancel = UIAlertAction(title: "Close", style: .cancel, handler: nil)
+        let alertController = UIAlertController(title: "Oppps", message: "We can't proceed because the field \(fieldName) is blank. Please note that all fields are required", preferredStyle: .alert)
+        
+        alertController.addAction(actionCancel)
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -82,6 +130,7 @@ class NewRestaurantTableViewController: UITableViewController {
             let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: { (action) in
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     let imagePicker = UIImagePickerController()
+                    imagePicker.delegate = self
                     imagePicker.allowsEditing = false
                     imagePicker.sourceType = .camera
                     
@@ -92,6 +141,7 @@ class NewRestaurantTableViewController: UITableViewController {
             let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default, handler: { (action) in
                 if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                     let imagePicker = UIImagePickerController()
+                    imagePicker.delegate = self
                     imagePicker.allowsEditing = false
                     imagePicker.sourceType = .photoLibrary
                     
@@ -105,72 +155,6 @@ class NewRestaurantTableViewController: UITableViewController {
         }
     }
 
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -184,3 +168,104 @@ extension NewRestaurantTableViewController: UITextFieldDelegate {
         return true
     }
 }
+
+extension NewRestaurantTableViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            photoImageView.image = selectedImage
+            photoImageView.contentMode = .scaleAspectFill
+            photoImageView.clipsToBounds = true
+        }
+        
+        let leadingContraint = NSLayoutConstraint(item: photoImageView, attribute: .leading, relatedBy: .equal, toItem: photoImageView.superview, attribute: .leading, multiplier: 1, constant: 0)
+        leadingContraint.isActive = true
+        
+        let trailingConstraint = NSLayoutConstraint(item: photoImageView, attribute: .trailing, relatedBy: .equal, toItem: photoImageView.superview, attribute: .trailing, multiplier: 1, constant: 0)
+        trailingConstraint.isActive = true
+        
+        let topContraint = NSLayoutConstraint(item: photoImageView, attribute: .top, relatedBy: .equal, toItem: photoImageView.superview, attribute: .top, multiplier: 1, constant: 0)
+        topContraint.isActive = true
+        
+        let botomContraint = NSLayoutConstraint(item: photoImageView, attribute: .bottom, relatedBy: .equal, toItem: photoImageView.superview, attribute: .bottom, multiplier: 1, constant: 0)
+        botomContraint.isActive = true
+
+        
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+extension NewRestaurantTableViewController: UINavigationControllerDelegate {
+    
+}
+
+
+// MARK: - Table view data source
+
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        return 0
+//    }
+
+/*
+ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+ let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+ 
+ // Configure the cell...
+ 
+ return cell
+ }
+ */
+
+/*
+ // Override to support conditional editing of the table view.
+ override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+ // Return false if you do not want the specified item to be editable.
+ return true
+ }
+ */
+
+/*
+ // Override to support editing the table view.
+ override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+ if editingStyle == .delete {
+ // Delete the row from the data source
+ tableView.deleteRows(at: [indexPath], with: .fade)
+ } else if editingStyle == .insert {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
+
+/*
+ // Override to support rearranging the table view.
+ override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+ 
+ }
+ */
+
+/*
+ // Override to support conditional rearranging of the table view.
+ override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+ // Return false if you do not want the item to be re-orderable.
+ return true
+ }
+ */
+
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destinationViewController.
+ // Pass the selected object to the new view controller.
+ }
+ */
+

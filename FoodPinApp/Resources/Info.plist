@@ -45,5 +45,7 @@
 	<array>
 		<string>Rubik-Medium.ttf</string>
 	</array>
+	<key>NSCalendarsUsageDescription</key>
+	<string>You need to grant the app access to your camera in order to take photos.</string>
 </dict>
 </plist>
