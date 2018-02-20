@@ -41,6 +41,8 @@
 		A3E848E61FE6D69B003D3D90 /* RestaurantDetailIconTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E848E51FE6D69B003D3D90 /* RestaurantDetailIconTextCell.swift */; };
 		A3E848E81FE7271A003D3D90 /* RestaurantDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E848E71FE7271A003D3D90 /* RestaurantDetailTextCell.swift */; };
 		A3E848EC1FE7332B003D3D90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3E848EB1FE7332B003D3D90 /* Assets.xcassets */; };
+		A3FD7A5E20306A2B00E7AAB8 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3FD7A5F20306A2B00E7AAB8 /* RealmSwift.framework */; };
+		A3FD7A6020306A5A00E7AAB8 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3FD7A6120306A5A00E7AAB8 /* Realm.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,8 @@
 		A3E848E51FE6D69B003D3D90 /* RestaurantDetailIconTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailIconTextCell.swift; sourceTree = "<group>"; };
 		A3E848E71FE7271A003D3D90 /* RestaurantDetailTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailTextCell.swift; sourceTree = "<group>"; };
 		A3E848EB1FE7332B003D3D90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A3FD7A5F20306A2B00E7AAB8 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3FD7A6120306A5A00E7AAB8 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED313469D38FD4C9B5434634 /* Pods-FoodPinApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodPinApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodPinApp/Pods-FoodPinApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +114,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3FD7A6020306A5A00E7AAB8 /* Realm.framework in Frameworks */,
+				A3FD7A5E20306A2B00E7AAB8 /* RealmSwift.framework in Frameworks */,
 				A33BA0D41FF655D100FEF179 /* MapKit.framework in Frameworks */,
 				58B6A6603A31C2C840C31056 /* Pods_FoodPinApp.framework in Frameworks */,
 			);
@@ -153,6 +159,8 @@
 		A33BA0D21FF655D100FEF179 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3FD7A6120306A5A00E7AAB8 /* Realm.framework */,
+				A3FD7A5F20306A2B00E7AAB8 /* RealmSwift.framework */,
 				A33BA0D31FF655D100FEF179 /* MapKit.framework */,
 				684B7FD7429048E0109CD7BF /* Pods_FoodPinApp.framework */,
 			);

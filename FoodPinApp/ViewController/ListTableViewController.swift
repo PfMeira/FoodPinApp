@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ListTableViewController: UIViewController {
     
@@ -50,6 +51,12 @@ class ListTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let realm = try! Realm()
+        
+        for nRestaurant in restaurant {
+            Restaurant.createRestaurant(in: realm, nRestaurant: nRestaurant)
+        }
+        
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -73,6 +80,8 @@ class ListTableViewController: UIViewController {
             restaurants.append(newRestaurant)
         }
         tableView.cellLayoutMarginsFollowReadableWidth = true
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
