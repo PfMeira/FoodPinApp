@@ -50,8 +50,14 @@ class ListTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
+      
         let realm = try! Realm()
+        if realm.isEmpty {
+            AllRestaurants().allRestaurants()
+        }
         
         for nRestaurant in restaurant {
             Restaurant.createRestaurant(in: realm, nRestaurant: nRestaurant)
@@ -64,8 +70,9 @@ class ListTableViewController: UIViewController {
         if let customFont = UIFont(name: "Rubik-Medium", size: 40.0) { //UIFont(name: "Rubik-Medium", size: 40.0) {
             navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0), NSAttributedStringKey.font: customFont]
         }
-
         navigationController?.hidesBarsOnSwipe = false
+       
+        
         for fRestaurant in restaurant {
             
             let rName = fRestaurant[0] as! String

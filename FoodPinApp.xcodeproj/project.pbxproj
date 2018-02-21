@@ -41,6 +41,8 @@
 		A3E848E61FE6D69B003D3D90 /* RestaurantDetailIconTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E848E51FE6D69B003D3D90 /* RestaurantDetailIconTextCell.swift */; };
 		A3E848E81FE7271A003D3D90 /* RestaurantDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E848E71FE7271A003D3D90 /* RestaurantDetailTextCell.swift */; };
 		A3E848EC1FE7332B003D3D90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3E848EB1FE7332B003D3D90 /* Assets.xcassets */; };
+		A3F13FAF203CD2C600882679 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F13FAE203CD2C600882679 /* DataController.swift */; };
+		A3F13FB2203CDD1000882679 /* AllRestaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F13FB1203CDD1000882679 /* AllRestaurants.swift */; };
 		A3FD7A5E20306A2B00E7AAB8 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3FD7A5F20306A2B00E7AAB8 /* RealmSwift.framework */; };
 		A3FD7A6020306A5A00E7AAB8 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3FD7A6120306A5A00E7AAB8 /* Realm.framework */; };
 /* End PBXBuildFile section */
@@ -104,6 +106,8 @@
 		A3E848E51FE6D69B003D3D90 /* RestaurantDetailIconTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailIconTextCell.swift; sourceTree = "<group>"; };
 		A3E848E71FE7271A003D3D90 /* RestaurantDetailTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailTextCell.swift; sourceTree = "<group>"; };
 		A3E848EB1FE7332B003D3D90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A3F13FAE203CD2C600882679 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		A3F13FB1203CDD1000882679 /* AllRestaurants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRestaurants.swift; sourceTree = "<group>"; };
 		A3FD7A5F20306A2B00E7AAB8 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3FD7A6120306A5A00E7AAB8 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED313469D38FD4C9B5434634 /* Pods-FoodPinApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodPinApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodPinApp/Pods-FoodPinApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 		A3A341D61FD95DC20082BF14 /* FoodPinApp */ = {
 			isa = PBXGroup;
 			children = (
+				A3F13FAD203CD22300882679 /* Network */,
 				A3A342051FD97E800082BF14 /* AppDelegate */,
 				A3A3420C1FDB6DBB0082BF14 /* Views */,
 				A3A342061FD98C990082BF14 /* ViewController */,
@@ -306,6 +311,23 @@
 				A3E848D51FE57932003D3D90 /* Rubik-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		A3F13FAD203CD22300882679 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A3F13FB0203CDCFE00882679 /* Data */,
+				A3F13FAE203CD2C600882679 /* DataController.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A3F13FB0203CDCFE00882679 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A3F13FB1203CDD1000882679 /* AllRestaurants.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -524,6 +546,7 @@
 				A3E848E81FE7271A003D3D90 /* RestaurantDetailTextCell.swift in Sources */,
 				A3A341DA1FD95DC20082BF14 /* ListTableViewController.swift in Sources */,
 				A3A342131FE330DB0082BF14 /* RestaurantDetailViewController.swift in Sources */,
+				A3F13FAF203CD2C600882679 /* DataController.swift in Sources */,
 				A310B5591FFBA204006BE6FC /* MapViewController.swift in Sources */,
 				A3E848E61FE6D69B003D3D90 /* RestaurantDetailIconTextCell.swift in Sources */,
 				A31B9A841FF2E87400D75CC7 /* UINavigationController+Ext.swift in Sources */,
@@ -532,6 +555,7 @@
 				A3A341D81FD95DC20082BF14 /* FoodPinAppDelegate.swift in Sources */,
 				A33BA0D61FF69A7A00FEF179 /* RestaurantDetailSeparatorCell.swift in Sources */,
 				A3056C53200A9027006AF243 /* RoundedTextField.swift in Sources */,
+				A3F13FB2203CDD1000882679 /* AllRestaurants.swift in Sources */,
 				A3A342091FD9AC750082BF14 /* Restaurant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

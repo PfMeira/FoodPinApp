@@ -47,7 +47,9 @@ class Restaurant: Object {
     //private
     @discardableResult
     static func createRestaurant(in realm: Realm, nRestaurant: Array<Any>) -> Restaurant {
-        //let realm = try! Realm()
+        
+        DataController().removeAllRestaurants()
+
         let rName = nRestaurant[0] as! String
         let rType = nRestaurant[1] as! String
         let rLocation = nRestaurant[2] as! String
@@ -55,18 +57,12 @@ class Restaurant: Object {
         let rDescription = nRestaurant[4] as! String
         let rImage = nRestaurant[5] as! String
         let rIsVisited = nRestaurant[6] as! Bool
-//        let rName = nRestaurant[6]
-//        let rName = nRestaurant[]
-//
-//        try! realm.write {
-//            realm.deleteAll()
-//        }
-        
+
         let rID = Restaurant(name: rName, type: rType, location: rLocation, phone: rPhone, description: rDescription, image: rImage, isVisited: rIsVisited)
-        try! realm.write {
-            realm.add(rID)
-        }
-        return rID
+        
+        return DataController().addRestaurant(restaurant: rID)
+        
+       // return rID
     }
 
 //    convenience init() {
