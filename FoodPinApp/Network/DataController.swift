@@ -11,11 +11,11 @@ import RealmSwift
 
 class DataController {
     
-    let realm = try! Realm()
-    
-//    func printRealm() {
-//        print(realm.configuration.fileURL)
-//    }
+    static let sharedDataController = DataController()
+    var realm = try! Realm()
+
+    private init(){
+    }
     
     func isEmpty() {
        // removeAllRestaurants()
@@ -46,12 +46,7 @@ class DataController {
     
     func returnAllRestaurants() -> Results<Restaurant> {
         
-        //var nRestaurants = [Restaurant]()
         let restraunts = realm.objects(Restaurant.self)
-//
-//        for nRestaurant  in restraunts {
-//            nRestaurants.append(nRestaurant)
-//        }
         return restraunts
     }
 }

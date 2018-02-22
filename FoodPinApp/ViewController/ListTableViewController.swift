@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Foundation
-import Realm
 import RealmSwift
 
 
@@ -25,9 +23,10 @@ class ListTableViewController: UIViewController {
     
     // MARK: - Variable
     var restaurantIsVisited = Array(repeating: false, count: 21)
-    var restaurants = [Restaurant]()
-
-   // var res = Results<Restaurant>
+    //var restaurants = [Restaurant]()
+  
+    let dataContollerShared = DataController.sharedDataController
+    var restaurants: Results<Restaurant>?
     
     // MARK: - View Controller life cycle
     override func viewDidLoad() {
@@ -35,15 +34,12 @@ class ListTableViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //AllRestaurants().allRestaurants()
 
-        // AllRestaurants().allRestaurants()
-        let getRestaurants = DataController().returnAllRestaurants()
-        
-        for nRestaurant  in getRestaurants {
-            restaurants.append(nRestaurant)
-        }
-        print(getRestaurants)
-        
+       restaurants = DataController.sharedDataController.returnAllRestaurants()
+
+
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -54,14 +50,14 @@ class ListTableViewController: UIViewController {
         navigationController?.hidesBarsOnSwipe = false
         tableView.cellLayoutMarginsFollowReadableWidth = true
         
-    
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.hidesBarsOnSwipe = true
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -70,14 +66,14 @@ class ListTableViewController: UIViewController {
     //  override var prefersStatusBarHidden: Bool {
     //     return true
     //  }
-
+    
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showRestauranteDetails" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let destination = segue.destination as! RestaurantDetailViewController
-                destination.restaurant = restaurants[indexPath.row]
+                //destination.restaurant = restaurants[indexPath.row]
             }
         }
     }
@@ -98,7 +94,7 @@ extension ListTableViewController: UITableViewDelegate {
     // MARK: - UITableViewDelegate Protocol
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+        
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -109,7 +105,7 @@ extension ListTableViewController: UITableViewDelegate {
         
         let delectAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
             // Delete the row from the data source
-            self.restaurants.remove(at: indexPath.row)
+       //TODO       self.restaurants.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             
             completionHandler(true)
@@ -119,23 +115,23 @@ extension ListTableViewController: UITableViewDelegate {
         
         let shareAction = UIContextualAction(style: .normal, title: "Share") { (action, sourceView, completionHandler) in
             
-            let defaultText = "Just checkin in at \(self.restaurants[indexPath.row])"
+         //TODO     let defaultText = "Just checkin in at \(self.restaurants[indexPath.row])"
             let activityController: UIActivityViewController
             
-            if let imageToShare = UIImage(named: self.restaurants[indexPath.row].name) {
-                activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
-            } else {
-                activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
-            }
-            
-            if let popoverController = activityController.popoverPresentationController {
-                if let cell = tableView.cellForRow(at: indexPath){
-                    popoverController.sourceView = cell
-                    popoverController.sourceRect = cell.bounds
-                }
-            }
-            
-            self.present(activityController, animated: true, completion: nil)
+//   //TODO           if let imageToShare = UIImage(named: self.restaurants[indexPath.row].name) {
+//                activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
+//            } else {
+//                activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+//            }
+//
+//            if let popoverController = activityController.popoverPresentationController {
+//                if let cell = tableView.cellForRow(at: indexPath){
+//                    popoverController.sourceView = cell
+//                    popoverController.sourceRect = cell.bounds
+//                }
+//            }
+//
+//            self.present(activityController, animated: true, completion: nil)
             completionHandler(true)
         }
         shareAction.backgroundColor = UIColor(red: 254.0/255.0, green: 149.0/255.0, blue: 38.0/255.0, alpha: 1.0)
@@ -146,29 +142,29 @@ extension ListTableViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-
+        
         let checkInAction = UIContextualAction(style: .normal, title: "Check In") { (action, sourceView, completionHandler) in
             let cell = tableView.cellForRow(at: indexPath) as! RestaurantTableViewCell
-
-            if self.restaurants[indexPath.row].isVisited == false {
-                self.restaurants[indexPath.row].isVisited = true
-                cell.checkInImageView.isHidden =  false
-
-            } else {
-                self.restaurants[indexPath.row].isVisited = false
-                cell.checkInImageView.isHidden =  true
-            }
+//TODO
+//            if self.restaurants[indexPath.row].isVisited == false {
+//                self.restaurants[indexPath.row].isVisited = true
+//                cell.checkInImageView.isHidden =  false
+//
+//            } else {
+//                self.restaurants[indexPath.row].isVisited = false
+//                cell.checkInImageView.isHidden =  true
+//            }
             completionHandler(true)
         }
-
-        if self.restaurants[indexPath.row].isVisited == false {
-            checkInAction.backgroundColor = UIColor(red: 39, green: 174, blue: 96)
-            checkInAction.image = UIImage(named: "tick")
-            
-        } else {
-            checkInAction.backgroundColor = UIColor(red: 39, green: 174, blue: 96)
-            checkInAction.image = UIImage(named: "undo")
-        }
+//TODO
+//        if self.restaurants[indexPath.row].isVisited == false {
+//            checkInAction.backgroundColor = UIColor(red: 39, green: 174, blue: 96)
+//            checkInAction.image = UIImage(named: "tick")
+//
+//        } else {
+//            checkInAction.backgroundColor = UIColor(red: 39, green: 174, blue: 96)
+//            checkInAction.image = UIImage(named: "undo")
+//        }
         
         let swipeConfiguration = UISwipeActionsConfiguration(actions: [checkInAction])
         return swipeConfiguration
@@ -180,9 +176,10 @@ extension ListTableViewController: UITableViewDelegate {
 extension ListTableViewController: UITableViewDataSource {
     
     // MARK: - UITableViewDataSource Protocol
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurants.count
+    
+        return 10// restaurants.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -199,19 +196,21 @@ extension ListTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let iRestaurant = restaurants[indexPath.row]
+//        guard let iRestaurant = nRestaurants[indexPath.row] else {
+//            return UITableViewCell()
+//        }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! RestaurantTableViewCell        
-        cell.nameLabel.text = iRestaurant.name
-        cell.locationLabel.text = iRestaurant.location
-        cell.typeLabel.text = iRestaurant.type
+//        cell.nameLabel.text = iRestaurant.name
+//        cell.locationLabel.text = iRestaurant.location
+//        cell.typeLabel.text = iRestaurant.type
+//
+//        let imageName = iRestaurant.image
+//        cell.thumbnailImageView.image = UIImage(named: imageName)
+//        cell.thumbnailImageView.layer.borderWidth = 3
+//        cell.thumbnailImageView.layer.borderColor = UIColor.orange.cgColor
+        //cell.checkInImageView.isHidden = nRestaurants![indexPath.row].isVisited ? false : true
         
-        let imageName = iRestaurant.image
-        cell.thumbnailImageView.image = UIImage(named: imageName)
-        cell.thumbnailImageView.layer.borderWidth = 3
-        cell.thumbnailImageView.layer.borderColor = UIColor.orange.cgColor
-        cell.checkInImageView.isHidden = restaurants[indexPath.row].isVisited ? false : true
-
         return cell
     }
 }

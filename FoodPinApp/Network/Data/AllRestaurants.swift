@@ -45,7 +45,7 @@ class AllRestaurants {
             let rIsVisited = fRestaurant[6] as! Bool
             
             let newRestaurant = Restaurant.init(name: rName, type: rType, location: rLocation, phone: rPhone, description: rDescription, image: rImage, isVisited: rIsVisited)
-            _ = DataController().addRestaurant(restaurant: newRestaurant)
+           // _ = DataController().addRestaurant(restaurant: newRestaurant)
         }
     }
 }

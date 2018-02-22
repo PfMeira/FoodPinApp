@@ -48,7 +48,7 @@ class Restaurant: Object {
     @discardableResult
     static func createRestaurant(in realm: Realm, nRestaurant: Array<Any>) -> Restaurant {
         
-        DataController().removeAllRestaurants()
+      //  DataController().removeAllRestaurants()
 
         let rName = nRestaurant[0] as! String
         let rType = nRestaurant[1] as! String
@@ -60,8 +60,8 @@ class Restaurant: Object {
 
         let rID = Restaurant(name: rName, type: rType, location: rLocation, phone: rPhone, description: rDescription, image: rImage, isVisited: rIsVisited)
         
-        return DataController().addRestaurant(restaurant: rID)
-        
+     //   return DataController().addRestaurant(restaurant: rID)
+        return Restaurant()
        // return rID
     }
 
