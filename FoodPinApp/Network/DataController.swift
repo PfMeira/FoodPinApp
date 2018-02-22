@@ -10,20 +10,19 @@ import Foundation
 import RealmSwift
 
 class DataController {
- 
+    
     let realm = try! Realm()
     
-    func printRealm() {
-        print(realm.configuration.fileURL)
-    }
+//    func printRealm() {
+//        print(realm.configuration.fileURL)
+//    }
     
-    func isEmpety() {
-        
-        removeAllRestaurants()
-        
+    func isEmpty() {
+       // removeAllRestaurants()
+
         if !realm.isEmpty {
             print("vazia")
-            returnAllRestaurants()
+            _ = returnAllRestaurants()
         } else {
             print("Vazia")
             AllRestaurants().allRestaurants()
@@ -37,23 +36,22 @@ class DataController {
     }
     
     func addRestaurant(restaurant: Restaurant) -> Restaurant {
-        
+    
         print(restaurant)
-        
         try! realm.write {
             realm.add(restaurant)
         }
         return restaurant
     }
     
-    func returnAllRestaurants(){ //} -> [Restaurant] {
+    func returnAllRestaurants() -> Results<Restaurant> {
         
-        try! realm.write {
-            let restraunt = realm.objects(Restaurant.Type)
-            
-            print(restraunt)
-        }
-        
-//        return Restaurant()
+        //var nRestaurants = [Restaurant]()
+        let restraunts = realm.objects(Restaurant.self)
+//
+//        for nRestaurant  in restraunts {
+//            nRestaurants.append(nRestaurant)
+//        }
+        return restraunts
     }
 }
