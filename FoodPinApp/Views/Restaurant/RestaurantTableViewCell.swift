@@ -33,4 +33,21 @@ class RestaurantTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func configurationCell(restaurant: Restaurant) {
+        print(restaurant)
+        
+        nameLabel.text = restaurant.name
+        locationLabel.text = restaurant.location
+        typeLabel.text = restaurant.type
+        checkInImageView.isHidden = restaurant.isVisited ? false : true
+        
+        let imageName = restaurant.image
+        thumbnailImageView.image = UIImage(named: imageName)
+        thumbnailImageView.layer.borderWidth = 3
+        thumbnailImageView.layer.borderColor = UIColor.orange.cgColor
+    }
+    
+    func isHiddenCheckIn(hidden: Bool) {
+        checkInImageView.isHidden = hidden
+    }
 }

@@ -49,4 +49,21 @@ class DataController {
         let restraunts = realm.objects(Restaurant.self)
         return restraunts
     }
+    
+    func deleteRestaurant(restaurant: Restaurant) -> Results<Restaurant> {
+        let restaurants = realm.objects(Restaurant.self)
+        try! realm.write {
+            realm.delete(restaurant)
+        }
+        return restaurants
+    }
+    
+    func updateIsVisitedRestaurant(restaurant: Restaurant)  -> Restaurant {
+        
+        try! realm.write {
+            restaurant.setValue(!restaurant.isVisited, forKeyPath: "isVisited")
+            realm.add(restaurant, update: true)
+        }
+        return restaurant
+    }
 }
