@@ -9,7 +9,9 @@
 import UIKit
 
 class NewRestaurantTableViewController: UITableViewController {
-
+    
+    let dataController = DataController.sharedDataController
+    
     @IBOutlet var nameTextField: RoundedTextField! {
         didSet {
             nameTextField.tag = 1
@@ -51,7 +53,7 @@ class NewRestaurantTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Configure navigation bar appearance
         
         navigationController?.navigationBar.tintColor = .white
@@ -61,15 +63,15 @@ class NewRestaurantTableViewController: UITableViewController {
             navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(red: 231, green: 76, blue: 60), NSAttributedStringKey.font: customFont]
         }
         tableView.separatorStyle = .none
-
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -78,45 +80,59 @@ class NewRestaurantTableViewController: UITableViewController {
     // MARK: - Func Save Restaurant
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-
-        if nameTextField.text != "" {
-            if typeTextField.text != "" {
-                if addressTextField.text != "" {
-                    if phoneTextField.text != "" {
-                        if descriptionTextView.text != "" {
-                            print("Name: \(String(describing: nameTextField.text))")
-                            print("Type: \(String(describing: typeTextField.text))")
-                            print("Address: \(String(describing: addressTextField.text))")
-                            print("Phone: \(String(describing: phoneTextField))")
-                            print("Description: \(String(describing: descriptionTextView))")
-                            dismiss(animated: true, completion: nil)
+        // TODO Modify
+        guard let name = nameTextField.text else {
+            return
+        }
+        
+        guard let type = typeTextField.text else {
+            return
+        }
+        
+        guard let address = addressTextField.text else {
+            return
+        }
+        
+        guard let phone = phoneTextField.text else {
+            return
+        }
+        
+        guard let description = descriptionTextView.text else {
+            return
+        }
+        
+        if name != "" {
+            if type != "" {
+                if address != "" {
+                    if phone != "" {
+                        if description != "" {
+                            
                         } else {
-                            alertViewPopUp(fieldName: "restaurant description")
+                            alertViewPopUp(fieldName: "Restaurant")
                         }
                     } else {
-                        alertViewPopUp(fieldName: "restaurant phone")
+                        alertViewPopUp(fieldName: "Restaurant type")
                     }
                 } else {
-                    alertViewPopUp(fieldName: "restaurant address")
+                    alertViewPopUp(fieldName: "Address")
                 }
             } else {
-                alertViewPopUp(fieldName: "restaurant type")
+                alertViewPopUp(fieldName: "Type Restaurant")
             }
         } else {
-            alertViewPopUp(fieldName: "restaurant UITextViewDelegate")
+            alertViewPopUp(fieldName: "Restaurant")
         }
     }
     
     // MARK:  - Alert View
     
     func alertViewPopUp(fieldName: String) {
-    
+        
         let actionCancel = UIAlertAction(title: "Close", style: .cancel, handler: nil)
         let alertController = UIAlertController(title: "Oppps", message: "We can't proceed because the field \(fieldName) is blank. Please note that all fields are required", preferredStyle: .alert)
         
         alertController.addAction(actionCancel)
         self.present(alertController, animated: true, completion: nil)
-        
     }
     
     // MARK: - Table view delegate
@@ -124,16 +140,14 @@ class NewRestaurantTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 0 {
-            
             let photoSourceRequestController = UIAlertController(title: "", message: "Choose your photo source", preferredStyle: .actionSheet)
-            
             let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: { (action) in
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     let imagePicker = UIImagePickerController()
                     imagePicker.delegate = self
-                    imagePicker.allowsEditing = false
+                    imagePicker.allowsEditing = true
                     imagePicker.sourceType = .camera
-                    
+                  //  let path = editi editingInfo[UIImagePickerControllerReferenceURL] as! NSURL
                     self.present(imagePicker, animated: true, completion: nil)
                 }
             })
@@ -150,12 +164,9 @@ class NewRestaurantTableViewController: UITableViewController {
             })
             photoSourceRequestController.addAction(cameraAction)
             photoSourceRequestController.addAction(photoLibraryAction)
-            
             present(photoSourceRequestController, animated: true, completion: nil)
         }
     }
-
-
 }
 
 extension NewRestaurantTableViewController: UITextFieldDelegate {
@@ -174,7 +185,6 @@ extension NewRestaurantTableViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            
             photoImageView.image = selectedImage
             photoImageView.contentMode = .scaleAspectFill
             photoImageView.clipsToBounds = true
@@ -191,7 +201,7 @@ extension NewRestaurantTableViewController: UIImagePickerControllerDelegate {
         
         let botomContraint = NSLayoutConstraint(item: photoImageView, attribute: .bottom, relatedBy: .equal, toItem: photoImageView.superview, attribute: .bottom, multiplier: 1, constant: 0)
         botomContraint.isActive = true
-
+        
         
         dismiss(animated: true, completion: nil)
     }
@@ -200,72 +210,3 @@ extension NewRestaurantTableViewController: UIImagePickerControllerDelegate {
 extension NewRestaurantTableViewController: UINavigationControllerDelegate {
     
 }
-
-
-// MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
-
-/*
- override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
- let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
- 
- // Configure the cell...
- 
- return cell
- }
- */
-
-/*
- // Override to support conditional editing of the table view.
- override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
- // Return false if you do not want the specified item to be editable.
- return true
- }
- */
-
-/*
- // Override to support editing the table view.
- override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
- if editingStyle == .delete {
- // Delete the row from the data source
- tableView.deleteRows(at: [indexPath], with: .fade)
- } else if editingStyle == .insert {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
- 
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
- // Return false if you do not want the item to be re-orderable.
- return true
- }
- */
-
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destinationViewController.
- // Pass the selected object to the new view controller.
- }
- */
-

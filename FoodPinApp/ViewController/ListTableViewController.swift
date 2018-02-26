@@ -39,7 +39,7 @@ class ListTableViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         //AllRestaurants().allRestaurants()
-        restaurants = DataController.sharedDataController.returnAllRestaurants()
+        restaurants = DataController.sharedDataController.getAllRestaurants()
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -68,10 +68,15 @@ class ListTableViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
         if segue.identifier == "showRestauranteDetails" {
             if let indexPath = tableView.indexPathForSelectedRow {
+                
+                guard let cRestaurant = restaurants?[indexPath.row] else {
+                    return
+                }
                 let destination = segue.destination as! RestaurantDetailViewController
-                //TODO                 //destination.restaurant = restaurants[indexPath.row]
+                destination.restaurant = cRestaurant
             }
         }
     }
@@ -101,39 +106,37 @@ extension ListTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        guard let cRestaurant = restaurants else {
+        guard let cRestaurant = restaurants?[indexPath.row] else {
             return UISwipeActionsConfiguration()
         }
         
         let delectAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
             // Delete the row from the data source
-            //TODO    self.restaurants.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-            
+            self.dataContollerShared.deleteRestaurant(restaurant: cRestaurant)
+            self.tableView.reloadData()
             completionHandler(true)
         }
+        
         delectAction.backgroundColor = UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
         delectAction.image = UIImage(named: "delete")
         
         let shareAction = UIContextualAction(style: .normal, title: "Share") { (action, sourceView, completionHandler) in
             
-            //TODO
-            //            let defaultText = "Just checkin in at \(self.restaurants[indexPath.row])"
-            //            let activityController: UIActivityViewController
-            //            if let imageToShare = UIImage(named: self.restaurants[indexPath.row].name) {
-            //                activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
-            //            } else {
-            //                activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
-            //            }
-            //
-            //            if let popoverController = activityController.popoverPresentationController {
-            //                if let cell = tableView.cellForRow(at: indexPath){
-            //                    popoverController.sourceView = cell
-            //                    popoverController.sourceRect = cell.bounds
-            //                }
-            //            }
-            //
-            //        self.present(activityController, animated: true, completion: nil)
+            let defaultText = "Just checkin in at \(cRestaurant)"
+            let activityController: UIActivityViewController
+            if let imageToShare = UIImage(named: cRestaurant.name) {
+                activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
+            } else {
+                activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+            }
+            
+            if let popoverController = activityController.popoverPresentationController {
+                if let cell = tableView.cellForRow(at: indexPath){
+                    popoverController.sourceView = cell
+                    popoverController.sourceRect = cell.bounds
+                }
+            }
+            self.present(activityController, animated: true, completion: nil)
             completionHandler(true)
         }
         shareAction.backgroundColor = UIColor(red: 254.0/255.0, green: 149.0/255.0, blue: 38.0/255.0, alpha: 1.0)
@@ -145,34 +148,22 @@ extension ListTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        guard var cRestaurant = restaurants?[indexPath.row] else {
+        guard let cRestaurant = restaurants?[indexPath.row] else {
             return UISwipeActionsConfiguration()
         }
         
         let checkInAction = UIContextualAction(style: .normal, title: "Check In") { (action, sourceView, completionHandler) in
-            //     //TODO
             
             let cell = tableView.cellForRow(at: indexPath) as! RestaurantTableViewCell
             if cRestaurant.isVisited == false {
-                cRestaurant = self.dataContollerShared.updateIsVisitedRestaurant(restaurant: cRestaurant)
                 cell.isHiddenCheckIn(hidden: false)
-                //self.restaurants?.setValue(true, forKeyPath: "isVisited") //isVisited = true
-
+                self.dataContollerShared.updateIsVisitedRestaurant(restaurant: cRestaurant)
+                
             } else {
-                // cRestaurant.isVisited = false
-//                cRestaurant.setValue(false, forKeyPath: "isVisited")
-                cRestaurant = self.dataContollerShared.updateIsVisitedRestaurant(restaurant: cRestaurant)
+                
                 cell.isHiddenCheckIn(hidden: true)
+                self.dataContollerShared.updateIsVisitedRestaurant(restaurant: cRestaurant)
             }
-            
-            //            if self.restaurants[indexPath.row].isVisited == false {
-            //                self.restaurants[indexPath.row].isVisited = true
-            //                cell.checkInImageView.isHidden =  false
-            //
-            //            } else {
-            //                self.restaurants[indexPath.row].isVisited = false
-            //                cell.checkInImageView.isHidden =  true
-            //            }
             completionHandler(true)
         }
         if cRestaurant.isVisited == false {
@@ -196,7 +187,10 @@ extension ListTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 10// restaurants.count
+        guard let cRestaurants = restaurants else {
+            return 0
+        }
+        return cRestaurants.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

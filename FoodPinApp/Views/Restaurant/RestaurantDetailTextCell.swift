@@ -26,4 +26,7 @@ class RestaurantDetailTextCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func configureCell(description: String)  {
+        descriptionLabel.text = description
+    }
 }

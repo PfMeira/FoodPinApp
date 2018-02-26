@@ -22,7 +22,7 @@ class DataController {
 
         if !realm.isEmpty {
             print("vazia")
-            _ = returnAllRestaurants()
+            _ = getAllRestaurants()
         } else {
             print("Vazia")
             AllRestaurants().allRestaurants()
@@ -35,35 +35,28 @@ class DataController {
         }
     }
     
-    func addRestaurant(restaurant: Restaurant) -> Restaurant {
-    
+    func addRestaurant(restaurant: Restaurant) {
         print(restaurant)
         try! realm.write {
             realm.add(restaurant)
         }
-        return restaurant
     }
     
-    func returnAllRestaurants() -> Results<Restaurant> {
-        
+    func getAllRestaurants() -> Results <Restaurant> {
         let restraunts = realm.objects(Restaurant.self)
         return restraunts
     }
     
-    func deleteRestaurant(restaurant: Restaurant) -> Results<Restaurant> {
-        let restaurants = realm.objects(Restaurant.self)
+    func deleteRestaurant(restaurant: Restaurant) {
         try! realm.write {
             realm.delete(restaurant)
         }
-        return restaurants
     }
     
-    func updateIsVisitedRestaurant(restaurant: Restaurant)  -> Restaurant {
-        
+    func updateIsVisitedRestaurant(restaurant: Restaurant) {
         try! realm.write {
             restaurant.setValue(!restaurant.isVisited, forKeyPath: "isVisited")
             realm.add(restaurant, update: true)
         }
-        return restaurant
     }
 }

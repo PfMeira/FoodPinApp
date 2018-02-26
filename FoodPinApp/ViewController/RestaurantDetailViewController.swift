@@ -47,11 +47,8 @@ class RestaurantDetailViewController: UIViewController {
         tableView.separatorStyle = .none
         
         // MARK: - NavigationViewController
-        headerView.headerImageView.image = UIImage(named: restaurant.image)
-        headerView.nameLabel.text = restaurant.name
-        headerView.typeLabel.text = restaurant.type
-        headerView.typeLabel.layer.cornerRadius = 5 
-        headerView.heartImageView.isHidden = (restaurant.isVisited) ? false : true
+        print("")
+        headerView.configurationCell(restaurant: restaurant)
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,28 +74,27 @@ class RestaurantDetailViewController: UIViewController {
         if segue.identifier == "showMap" {
             let destinationController = segue.destination as? MapViewController
             destinationController?.restaurant = restaurant
-        }
-            
-        else if segue.identifier == "showReviewSegue" {
+        } else if segue.identifier == "showReviewSegue" {
             let destinationController = segue.destination as? ReviewViewController
             destinationController?.restaurant = restaurant
         }
     }
     
     @IBAction func close(segue: UIStoryboardSegue) {
-
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func rateRestaurant(segue: UIStoryboardSegue) {
         dismiss(animated: true, completion: {
             if let rating = segue.identifier {
+               
                 self.restaurant.rating = rating
                 self.headerView.ratingImageView.image = UIImage(named: rating)
-            
+                
                 let scaleTransform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
                 self.headerView.ratingImageView.transform = scaleTransform
                 self.headerView.ratingImageView.alpha = 0
+                
                 UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.7, options: [], animations:  {
                     self.headerView.ratingImageView.transform = .identity
                     self.headerView.ratingImageView.alpha = 1
@@ -109,7 +105,6 @@ class RestaurantDetailViewController: UIViewController {
 }
 
 extension RestaurantDetailViewController: UITableViewDataSource {
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5// 3
@@ -124,25 +119,22 @@ extension RestaurantDetailViewController: UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantDetailIconTextCell", for: indexPath) as! RestaurantDetailIconTextCell
-            // String(describing: RestaurantDetailIconTextCell.self), for: indexPath) as! RestaurantDetailIconTextCell
-            cell.iconImageView.image = UIImage(named: "phone")
-            cell.shortTextLabel.text = restaurant.phone
+            cell.configurationCell(phone: restaurant.phone, nameIcon: "phone")
             return cell
             
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailIconTextCell.self), for: indexPath) as! RestaurantDetailIconTextCell
-            cell.iconImageView.image = UIImage(named: "map")
-            cell.shortTextLabel.text = restaurant.location
+            cell.configurationCell(phone: restaurant.location, nameIcon: "map")
             return cell
             
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailTextCell.self), for: indexPath) as! RestaurantDetailTextCell
-            cell.descriptionLabel.text = restaurant.description
+            cell.configureCell(description: restaurant.descriptionRest)
             return cell
             
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantDetailSeparatorCell", for: indexPath) as! RestaurantDetailSeparatorCell
-            cell.titleLabel.text = "HOW TO GET HERE"
+            cell.configurationCell(title: "HOW TO GET HERE")
             return cell
             
         case 4:
@@ -159,7 +151,6 @@ extension RestaurantDetailViewController: UITableViewDataSource {
 extension RestaurantDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if indexPath.row == 4 {
             performSegue(withIdentifier: "showMap", sender: nil)
         }

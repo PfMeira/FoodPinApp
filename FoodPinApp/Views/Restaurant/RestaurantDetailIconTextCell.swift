@@ -27,4 +27,8 @@ class RestaurantDetailIconTextCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func configurationCell(phone: String, nameIcon: String) {
+        iconImageView.image = UIImage(named: nameIcon)
+        shortTextLabel.text = phone
+    }
 }

@@ -22,5 +22,8 @@ class RestaurantDetailSeparatorCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func configurationCell(title: String) {
+        titleLabel.text = title
+    }
 }
