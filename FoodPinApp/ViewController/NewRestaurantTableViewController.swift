@@ -101,27 +101,14 @@ class NewRestaurantTableViewController: UITableViewController {
             return
         }
         
-        if name != "" {
-            if type != "" {
-                if address != "" {
-                    if phone != "" {
-                        if description != "" {
-                            
-                        } else {
-                            alertViewPopUp(fieldName: "Restaurant")
-                        }
-                    } else {
-                        alertViewPopUp(fieldName: "Restaurant type")
-                    }
-                } else {
-                    alertViewPopUp(fieldName: "Address")
-                }
-            } else {
-                alertViewPopUp(fieldName: "Type Restaurant")
-            }
-        } else {
+        if name.isEmpty || type.isEmpty || address.isEmpty || phone.isEmpty ||description.isEmpty {
             alertViewPopUp(fieldName: "Restaurant")
+        } else {
+            
         }
+        //TODO
+        //enum
+
     }
     
     // MARK:  - Alert View
