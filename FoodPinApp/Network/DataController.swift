@@ -15,6 +15,7 @@ class DataController {
     var realm = try! Realm()
 
     private init(){
+        print(realm.configuration.fileURL)
     }
     
     func isEmpty() {

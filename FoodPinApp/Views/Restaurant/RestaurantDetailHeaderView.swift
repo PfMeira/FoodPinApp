@@ -31,13 +31,14 @@ class RestaurantDetailHeaderView: UIView {
     @IBOutlet var ratingImageView: UIImageView!
     
     func configurationCell(restaurant: Restaurant) {
+      
         headerImageView.image = UIImage(named: restaurant.image)
         nameLabel.text = restaurant.name
         typeLabel.text = restaurant.type
         typeLabel.layer.cornerRadius = 5
         heartImageView.isHidden = (restaurant.isVisited) ? false : true
     }
-    
+  
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

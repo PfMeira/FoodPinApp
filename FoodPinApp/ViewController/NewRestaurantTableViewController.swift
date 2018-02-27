@@ -50,6 +50,7 @@ class NewRestaurantTableViewController: UITableViewController {
     }
     
     @IBOutlet var photoImageView: UIImageView!
+    var imageName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,30 +82,20 @@ class NewRestaurantTableViewController: UITableViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         // TODO Modify
-        guard let name = nameTextField.text else {
+        guard let name = nameTextField.text, let type = typeTextField.text, let address = addressTextField.text, let phone = phoneTextField.text, let description = descriptionTextView.text else {
             return
         }
         
-        guard let type = typeTextField.text else {
-            return
-        }
-        
-        guard let address = addressTextField.text else {
-            return
-        }
-        
-        guard let phone = phoneTextField.text else {
-            return
-        }
-        
-        guard let description = descriptionTextView.text else {
-            return
-        }
-        
-        if name.isEmpty || type.isEmpty || address.isEmpty || phone.isEmpty ||description.isEmpty {
+        if name.isEmpty || type.isEmpty || address.isEmpty || phone.isEmpty || description.isEmpty {
             alertViewPopUp(fieldName: "Restaurant")
         } else {
             
+            guard let rImage = imageName else {
+                return
+            }
+            let restaurant = Restaurant.init(name: name, type: type, location: address, phone: phone, description: description, image: rImage, isVisited: false, rating: "")
+            dataController.addRestaurant(restaurant: restaurant)
+            dismiss(animated: true, completion: nil)
         }
         //TODO
         //enum
@@ -116,7 +107,7 @@ class NewRestaurantTableViewController: UITableViewController {
     func alertViewPopUp(fieldName: String) {
         
         let actionCancel = UIAlertAction(title: "Close", style: .cancel, handler: nil)
-        let alertController = UIAlertController(title: "Oppps", message: "We can't proceed because the field \(fieldName) is blank. Please note that all fields are required", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Oppps", message: "We can't proceed because the field is blank. Please note that all fields are required", preferredStyle: .alert)
         
         alertController.addAction(actionCancel)
         self.present(alertController, animated: true, completion: nil)
@@ -170,6 +161,13 @@ extension NewRestaurantTableViewController: UITextFieldDelegate {
 extension NewRestaurantTableViewController: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+       
+        let imageURL = info[UIImagePickerControllerImageURL] as! NSURL
+        imageName = imageURL.path
+//        let imageName = imageURL.path
+//        let nameImage = imageURL.
+//        let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+//        //let localPath = documentDirectory stringByAppendingPathComponent(imageName)
         
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             photoImageView.image = selectedImage

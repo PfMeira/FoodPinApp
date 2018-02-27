@@ -41,10 +41,17 @@ class RestaurantTableViewCell: UITableViewCell {
         typeLabel.text = restaurant.type
         checkInImageView.isHidden = restaurant.isVisited ? false : true
         
+        
         let imageName = restaurant.image
         thumbnailImageView.image = UIImage(named: imageName)
         thumbnailImageView.layer.borderWidth = 3
         thumbnailImageView.layer.borderColor = UIColor.orange.cgColor
+    }
+    
+    func getDirectoryPath() -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
     }
     
     func isHiddenCheckIn(hidden: Bool) {
