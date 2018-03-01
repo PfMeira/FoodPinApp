@@ -60,21 +60,8 @@ class Restaurant: Object {
 
         let rID = Restaurant(name: rName, type: rType, location: rLocation, phone: rPhone, description: rDescription, image: rImage, isVisited: rIsVisited)
         
-     //   return DataController().addRestaurant(restaurant: rID)
         return Restaurant()
-       // return rID
     }
 
-//    convenience init() {
-//        self.init(name: "",  location: "", type: "", imageName: "", isVisited: false)
-//    }
 }
 
-//extension Restaurant {
-//    
-//    convenience init() {
-//        self.init()
-//        self.init(name: "",  type: "", location: "", phone: "", description: "", image: "", isVisited: false)
-//    }
-//}
-//

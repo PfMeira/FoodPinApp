@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Foundation
 import RealmSwift
 
 
 class ListTableViewController: UIViewController {
+    
     
     // MARK: - IBOutlet
     
@@ -23,12 +25,16 @@ class ListTableViewController: UIViewController {
     
     // MARK: - Variable
     var restaurantIsVisited = Array(repeating: false, count: 21)
-    //var restaurants = [Restaurant]()
-    
-    let dataContollerShared = DataController.sharedDataController
     var restaurants: Results<Restaurant>?
-    
-    
+    var searchController: UISearchController? {
+        didSet {
+            searchController?.searchResultsUpdater = self
+            searchController?.dimsBackgroundDuringPresentation = false
+        }
+    }
+    var searchResults: [Restaurant] = []
+    let dataContollerShared = DataController.sharedDataController
+
     // MARK: - View Controller life cycle
     override func viewDidLoad() {
         
@@ -49,6 +55,11 @@ class ListTableViewController: UIViewController {
         }
         navigationController?.hidesBarsOnSwipe = false
         tableView.cellLayoutMarginsFollowReadableWidth = true
+        
+        // MARK: - SearchBar
+        searchController = UISearchController(searchResultsController: nil)
+        self.navigationItem.searchController = searchController
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,6 +99,24 @@ class ListTableViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - SearchController
+    
+    func filterContent(for searchText: String) {
+   // func filterContent(searchText: String) {
+    
+        guard let res = restaurants else {
+            return
+        }
+        searchResults = res.filter({ (restaurant) -> Bool in
+    //TODO
+//            guard let name = restaurant.name else {
+//                return false
+//            }
+
+            let isMatch = restaurant.name.localizedStandardContains(searchText)
+            return isMatch
+        })
+    }
 }
 
 // MARK: - Table view delegate
@@ -187,7 +216,6 @@ extension ListTableViewController: UITableViewDataSource {
     // MARK: - UITableViewDataSource Protocol
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         guard let cRestaurants = restaurants else {
             return 0
         }
@@ -200,7 +228,6 @@ extension ListTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            //TODO   restaurantNames.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         tableView.reloadData()
@@ -213,8 +240,18 @@ extension ListTableViewController: UITableViewDataSource {
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! RestaurantTableViewCell
         cell.configurationCell(restaurant: cRestaurant)
-        
         return cell
     }
 }
+
+extension ListTableViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filterContent(for: searchText)
+            tableView.reloadData()
+        }
+    }
+}
+
 
