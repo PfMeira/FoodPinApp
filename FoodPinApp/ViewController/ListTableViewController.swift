@@ -44,7 +44,7 @@ class ListTableViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
         
-        //AllRestaurants().allRestaurants()
+      //  AllRestaurants().allRestaurants()
         restaurants = DataController.sharedDataController.getAllRestaurants()
         
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -58,8 +58,9 @@ class ListTableViewController: UIViewController {
         
         // MARK: - SearchBar
         searchController = UISearchController(searchResultsController: nil)
-        self.navigationItem.searchController = searchController
-
+        
+        //Self.navigationItem.searchController = searchController
+        tableView.tableHeaderView = searchController?.searchBar
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,12 +84,11 @@ class ListTableViewController: UIViewController {
        
         if segue.identifier == "showRestauranteDetails" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                
-                guard let cRestaurant = restaurants?[indexPath.row] else {
+                guard let cRestaurant = restaurants?[indexPath.row], let searchActive = searchController?.isActive else {
                     return
                 }
                 let destination = segue.destination as! RestaurantDetailViewController
-                destination.restaurant = cRestaurant
+                destination.restaurant = searchActive ? searchResults[indexPath.row] : cRestaurant
             }
         }
     }
@@ -102,19 +102,22 @@ class ListTableViewController: UIViewController {
     // MARK: - SearchController
     
     func filterContent(for searchText: String) {
-   // func filterContent(searchText: String) {
-    
+        
         guard let res = restaurants else {
             return
         }
+        
         searchResults = res.filter({ (restaurant) -> Bool in
-    //TODO
-//            guard let name = restaurant.name else {
-//                return false
-//            }
-
-            let isMatch = restaurant.name.localizedStandardContains(searchText)
+            
+            let isMatch: Bool
+            if searchResults.count == 0 {
+                isMatch = true
+            }
+            else {
+                isMatch = restaurant.name.localizedStandardContains(searchText)
+            }
             return isMatch
+
         })
     }
 }
@@ -207,6 +210,17 @@ extension ListTableViewController: UITableViewDelegate {
         let swipeConfiguration = UISwipeActionsConfiguration(actions: [checkInAction])
         return swipeConfiguration
     }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        guard let searchActive = searchController?.isActive else {
+            return false
+        }
+        if searchActive {
+            return false
+        } else {
+            return true
+        }
+    }
 }
 
 // MARK: - Table view data source
@@ -216,10 +230,15 @@ extension ListTableViewController: UITableViewDataSource {
     // MARK: - UITableViewDataSource Protocol
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let cRestaurants = restaurants else {
+
+        guard let cRestaurants = restaurants, let searchActive = searchController?.isActive else {
             return 0
         }
-        return cRestaurants.count
+        if searchActive {
+            return searchResults.count
+        } else {
+            return cRestaurants.count
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -235,11 +254,18 @@ extension ListTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cRestaurant = restaurants?[indexPath.row] else {
+        guard let cRestaurant = restaurants else {
             return UITableViewCell()
         }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! RestaurantTableViewCell
-        cell.configurationCell(restaurant: cRestaurant)
+        
+        guard let searchActive = searchController?.isActive else {
+            return UITableViewCell()
+        }
+        
+        let isRestaurant = searchActive ? searchResults[indexPath.row] : cRestaurant[indexPath.row]
+        cell.configurationCell(restaurant: isRestaurant)
         return cell
     }
 }
@@ -247,11 +273,13 @@ extension ListTableViewController: UITableViewDataSource {
 extension ListTableViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
+        
         if let searchText = searchController.searchBar.text {
             filterContent(for: searchText)
             tableView.reloadData()
         }
     }
 }
+
 
 

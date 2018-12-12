@@ -14,10 +14,10 @@
 		A31B9A821FF2E3A700D75CC7 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31B9A811FF2E3A700D75CC7 /* UIColor+Ext.swift */; };
 		A31B9A841FF2E87400D75CC7 /* UINavigationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31B9A831FF2E87400D75CC7 /* UINavigationController+Ext.swift */; };
 		A31B9A861FFC3D8000D75CC7 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31B9A851FFC3D8000D75CC7 /* ReviewViewController.swift */; };
+		A3266FC4212DEFE700FA18B8 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3266FC3212DEFE700FA18B8 /* RealmSwift.framework */; };
 		A33BA0D41FF655D100FEF179 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33BA0D31FF655D100FEF179 /* MapKit.framework */; };
 		A33BA0D61FF69A7A00FEF179 /* RestaurantDetailSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33BA0D51FF69A7A00FEF179 /* RestaurantDetailSeparatorCell.swift */; };
 		A33BA0D81FF69C6400FEF179 /* RestaurantDetailMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33BA0D71FF69C6400FEF179 /* RestaurantDetailMapCell.swift */; };
-		A3882B26203F05CD00F26BB2 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3882B27203F05CD00F26BB2 /* RealmSwift.framework */; };
 		A3A341D81FD95DC20082BF14 /* FoodPinAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A341D71FD95DC20082BF14 /* FoodPinAppDelegate.swift */; };
 		A3A341DA1FD95DC20082BF14 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A341D91FD95DC20082BF14 /* ListTableViewController.swift */; };
 		A3A341DD1FD95DC20082BF14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3A341DB1FD95DC20082BF14 /* Main.storyboard */; };
@@ -73,6 +73,7 @@
 		A31B9A811FF2E3A700D75CC7 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		A31B9A831FF2E87400D75CC7 /* UINavigationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Ext.swift"; sourceTree = "<group>"; };
 		A31B9A851FFC3D8000D75CC7 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		A3266FC3212DEFE700FA18B8 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33BA0D31FF655D100FEF179 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A33BA0D51FF69A7A00FEF179 /* RestaurantDetailSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailSeparatorCell.swift; sourceTree = "<group>"; };
 		A33BA0D71FF69C6400FEF179 /* RestaurantDetailMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailMapCell.swift; sourceTree = "<group>"; };
@@ -119,7 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3882B26203F05CD00F26BB2 /* RealmSwift.framework in Frameworks */,
+				A3266FC4212DEFE700FA18B8 /* RealmSwift.framework in Frameworks */,
 				A3FD7A6020306A5A00E7AAB8 /* Realm.framework in Frameworks */,
 				A33BA0D41FF655D100FEF179 /* MapKit.framework in Frameworks */,
 				58B6A6603A31C2C840C31056 /* Pods_FoodPinApp.framework in Frameworks */,
@@ -164,6 +165,7 @@
 		A33BA0D21FF655D100FEF179 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3266FC3212DEFE700FA18B8 /* RealmSwift.framework */,
 				A3882B27203F05CD00F26BB2 /* RealmSwift.framework */,
 				A3FD7A6120306A5A00E7AAB8 /* Realm.framework */,
 				A3FD7A5F20306A2B00E7AAB8 /* RealmSwift.framework */,
@@ -344,7 +346,6 @@
 				A3A341D11FD95DC20082BF14 /* Frameworks */,
 				A3A341D21FD95DC20082BF14 /* Resources */,
 				6E2764D33D39F1EDF47B5FCC /* [CP] Embed Pods Frameworks */,
-				36354FB83320ED031A0068AA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -481,21 +482,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		36354FB83320ED031A0068AA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodPinApp/Pods-FoodPinApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5E72DC919B1156A3F18AA61E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
