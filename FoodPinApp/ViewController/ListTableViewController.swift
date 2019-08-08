@@ -280,6 +280,3 @@ extension ListTableViewController: UISearchResultsUpdating {
         }
     }
 }
-
-
-

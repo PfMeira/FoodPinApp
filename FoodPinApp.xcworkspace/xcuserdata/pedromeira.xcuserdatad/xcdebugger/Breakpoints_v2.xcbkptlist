@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodPinApp/ViewController/ListTableViewController.swift"
-            timestampString = "545090033.787177"
+            timestampString = "570995138.024967"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "255"
@@ -234,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodPinApp/ViewController/RestaurantDetailViewController.swift"
-            timestampString = "541464160.018914"
+            timestampString = "573668626.3075939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
@@ -250,7 +250,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodPinApp/ViewController/ListTableViewController.swift"
-            timestampString = "545090033.7875251"
+            timestampString = "570995138.025751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "216"
@@ -266,7 +266,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodPinApp/ViewController/ListTableViewController.swift"
-            timestampString = "545090033.787711"
+            timestampString = "570995138.02715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "277"
@@ -282,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodPinApp/ViewController/ListTableViewController.swift"
-            timestampString = "545090033.787877"
+            timestampString = "570995138.028913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "281"
@@ -314,7 +314,7 @@
                   moduleName = "FoodPinApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/pedromeira/Documents/Projects/FoodPinApp/FoodPinApp/ViewController/MapViewController.swift"
-                  timestampString = "564528471.960933"
+                  timestampString = "570956863.302286"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "28"
@@ -329,7 +329,7 @@
                   moduleName = "FoodPinApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/pedromeira/Documents/Projects/FoodPinApp/FoodPinApp/ViewController/MapViewController.swift"
-                  timestampString = "564528471.9629641"
+                  timestampString = "570956863.3046989"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "30"
@@ -362,12 +362,108 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodPinApp/ViewController/ListTableViewController.swift"
-            timestampString = "545090033.7881041"
+            timestampString = "570995138.029366"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
             endingLineNumber = "48"
             landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FoodPinApp/ViewController/ListTableViewController.swift"
+            timestampString = "570995138.032658"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "filterContent(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FoodPinApp/ViewController/ListTableViewController.swift"
+            timestampString = "570995138.0330499"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "filterContent(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FoodPinApp/ViewController/ListTableViewController.swift"
+            timestampString = "570995138.033406"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "filterContent(for:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FoodPinApp.ListTableViewController.filterContent(for: Swift.String) -&gt; ()"
+                  moduleName = "FoodPinApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedromeira/Documents/Projects/FoodPinApp/FoodPinApp/ViewController/ListTableViewController.swift"
+                  timestampString = "570956863.346395"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "130">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (FoodPinApp.Restaurant) -&gt; Swift.Bool in FoodPinApp.ListTableViewController.filterContent(for: Swift.String) -&gt; ()"
+                  moduleName = "FoodPinApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedromeira/Documents/Projects/FoodPinApp/FoodPinApp/ViewController/ListTableViewController.swift"
+                  timestampString = "570956863.351403"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FoodPinApp/ViewController/ListTableViewController.swift"
+            timestampString = "570995138.0338041"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "filterContent(for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
